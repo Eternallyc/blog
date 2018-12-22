@@ -5,11 +5,12 @@ import { AppComponent } from './app.component';
 import { HeadComponent } from './head/head.component';
 import { FooterComponent } from './footer/footer.component';
 import { IndexComponent } from './content/rightsides/index/index.component';
-import { AlbumComponent } from './content/album/album.component';
+import { AlbumComponent } from './content/albums/album/album.component';
 import { LeavemessageComponent } from './content/rightsides/leavemessage/leavemessage.component';
 import { LeftsideComponent } from './content/leftsides/leftside/leftside.component';
 import { BlogcontentComponent } from './content/rightsides/blogcontent/blogcontent.component';
 import { AboutmeComponent } from './content/rightsides/aboutme/aboutme.component';
+import { AlbumcontentComponent } from './content/albums/albumcontent/albumcontent.component';
 
 
 const appRoutes: Routes = [
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
     LeavemessageComponent,
     LeftsideComponent,
     BlogcontentComponent,
-    AboutmeComponent
+    AboutmeComponent,
+    AlbumcontentComponent
   ],
   imports: [
     RouterModule.forRoot(
