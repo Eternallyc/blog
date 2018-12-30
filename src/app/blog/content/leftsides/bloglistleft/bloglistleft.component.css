@@ -1,0 +1,115 @@
+.l_box h2 {
+  color: #333;
+  font-size: 14px;
+  line-height: 30px;
+  padding-left: 20px;
+  background: #fff
+}
+
+.l_box div {
+  background: rgba(255, 255, 255, 0.5);
+  margin-bottom: 20px;
+  overflow: hidden
+}
+
+.l_box div ul {
+  padding: 10px;
+  overflow: hidden
+}
+
+.about_me img {
+  width: 100%;
+  height: 100%;
+}
+
+.about_me p {
+  line-height: 24px;
+  font-size: 14px
+}
+
+.about_me i {
+  width: 120px;
+  float: left;
+  clear: left;
+  margin-right: 10px;
+  height: 90px;
+  overflow: hidden
+}
+
+.wdxc li {
+  width: 32%;
+  overflow: hidden;
+  float: left;
+  height: 80px;
+  margin-bottom: 2px;
+  margin-right: 2px
+}
+
+.wdxc li img {
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.wdxc li img:hover {
+  transform: scale(1.05)
+}
+
+.fenlei li {
+  margin-bottom: 10px;
+  margin-left: 10px
+}
+
+.tuijian li {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 10px;
+  background: url(../../../../../assets/images/li.png) left center no-repeat;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+.links a {
+  display: block;
+  float: left;
+  margin: 0 10px 5px 0
+}
+
+.guanzhu img {
+  width: 100%
+}
+
+.l_box .search {
+  border: 1px solid #000;
+  background: #000;
+  border-radius: 0 5px 5px 0;
+  position: relative;
+}
+
+.search input.input_submit {
+  border: 0;
+  background: 0;
+  color: #fff;
+  outline: none;
+  position: absolute;
+  top: 10px;
+  right: 8%
+}
+
+.search input.input_text {
+  border: 0;
+  line-height: 36px;
+  height: 36px;
+  width: 72%;
+  padding-left: 10px;
+  outline: none
+}
+
+.title_online{
+  width: 84%;
+  float: left;
+}
+

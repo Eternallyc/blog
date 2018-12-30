@@ -1,0 +1,19 @@
+<app-bloglistleft></app-bloglistleft>
+
+<main class="r_box">
+  <div class="filter-box d-flex align-items-center">
+    <div class="breadcrumbs-box">
+      <a href="https://blog.csdn.net/qq_38712932">全部文章</a><span class="ml8 mr8">&gt;</span>              {{name}}                </div>
+    <dl class="filter-sort-box d-flex align-items-center">
+      <dt>排序：</dt>
+      <dd><a href="javascript:void(0);" class="btn-filter-sort active" target="_self">默认</a></dd>
+      <dd><a href="https://blog.csdn.net/qq_38712932/article/category/6952891?orderby=UpdateTime" class="btn-filter-sort " target="_self">按更新时间</a></dd>
+      <dd><a href="https://blog.csdn.net/qq_38712932/article/category/6952891?orderby=ViewCount" class="btn-filter-sort " target="_self">按访问量</a></dd>
+    </dl>
+  </div>
+  <li *ngFor="let blog of bloglist"><i><a href="/blogconent/1"><img src="../../../../../../assets/images/1.jpg"></a></i>
+    <h3><a href="/">你是什么人便会遇上什么人</a></h3>
+    <p>有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。</p>
+  </li>
+
+</main>

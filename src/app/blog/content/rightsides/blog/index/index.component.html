@@ -1,0 +1,56 @@
+<app-leftside></app-leftside>
+<main class="r_box">
+  <div class="filter-box d-flex align-items-center">
+    <form id="seeOriginal">
+      <label class="chk-box" for="chkOriginal">
+      </label></form>
+    <dl class="filter-sort-box d-flex align-items-center">
+      <dt>排序：</dt>
+      <dd><a id ="defaultsort" (click)="defaultsort()" class="btn-filter-sort active" target="_self" style="cursor: pointer;">默认</a></dd>
+      <dd><a id ="timesort" (click)="timesort()" class="btn-filter-sort "
+             target="_self" style="cursor: pointer;">按更新时间</a></dd>
+      <dd><a id ="readnumsort" (click)="readnumsort()" class="btn-filter-sort " style="cursor: pointer;" target="_self">按访问量</a>
+      </dd>
+    </dl>
+  </div>
+  <div *ngFor="let article of toppingList">
+    <li><i><a [routerLink]="['../blogconent',article.article_id]"><img src="../../../../../../assets/images/1.jpg"></a></i>
+      <h3>
+        <b style="color: red;">[ 顶 ] </b> <a [routerLink]="['../blogconent',article.article_id]">{{article.article_title}}</a>
+      </h3>
+      <p>{{article.article_content.substring(0,60)}}...</p>
+      <div class="info-box d-flex align-content-center">
+        <p>
+          <span class="date">{{article.article_time}}</span>
+        </p>
+        <p>
+          <span class="read-num">阅读数：{{article.read_number}}</span>
+        </p>
+        <p>
+          <span class="read-num">评论数：{{article.comment_number}}</span>
+        </p>
+      </div>
+    </li>
+  </div>
+  <div *ngFor="let article of commonList">
+    <li><i><a [routerLink]="['../blogconent',article.article_id]"><img src="../../../../../../assets/images/1.jpg"></a></i>
+      <h3>
+        <a [routerLink]="['../blogconent',article.article_id]">{{article.article_title}}</a>
+      </h3>
+      <p>{{article.article_content.substring(0,60)}}...</p>
+      <div class="info-box d-flex align-content-center">
+        <p>
+          <span class="date">{{article.article_time}}</span>
+        </p>
+        <p>
+          <span class="read-num">阅读数：{{article.read_number}}</span>
+        </p>
+        <p>
+          <span class="read-num">评论数：{{article.comment_number}}</span>
+        </p>
+      </div>
+    </li>
+  </div>
+</main>
+
+

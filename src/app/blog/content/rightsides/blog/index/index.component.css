@@ -1,0 +1,64 @@
+.align-items-center {
+  -webkit-box-align: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+}
+.d-flex {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+.filter-box {
+  padding: 0 24px;
+  height: 48px;
+  background: #fff;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
+}
+.filter-box .chk-box {
+  color: #4d4d4d;
+  cursor: pointer;
+}
+.filter-box .chk-box [type="checkbox"] {
+  margin-right: 8px;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+.filter-box dl.filter-sort-box {
+  margin-left: auto;
+}
+.align-items-center {
+  -webkit-box-align: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+}
+.d-flex {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+.filter-box dl.filter-sort-box dt {
+  margin-right: 8px;
+  color: #999;
+}
+.filter-box dl.filter-sort-box dd {
+  margin-left: 24px;
+}
+dl.filter-sort-box dd a.active {
+  color: red;
+}
+div.info-box {
+  float: none;
+}
+div.info-box {
+  margin-top: -5px;
+  padding-top: 0;
+  font-size: 14px;
+  color: #6b6b6b;
+  float: left;
+  position: relative;
+}
+div.info-box p {
+  margin-right: 16px;
+}
