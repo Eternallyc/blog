@@ -18,7 +18,8 @@
 }
 
 .about_me img {
-  width: 100%
+  width: 100%;
+  height: 100%;
 }
 
 .about_me p {
@@ -65,9 +66,10 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   background: url(../../../../../assets/images/li.png) left center no-repeat;
-  padding-left: 20px
+  padding-left: 20px;
+  padding-right: 10px;
 }
 
 .links a {
@@ -105,3 +107,9 @@
   padding-left: 10px;
   outline: none
 }
+
+.title_online{
+  width: 84%;
+  float: left;
+}
+

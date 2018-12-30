@@ -11,7 +11,19 @@
 }
 
 .gbox p {
-  margin-bottom: 10px
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.gbox i {
+  display: block;
+  float: left;
+  margin-right: 10px;
+}
+
+.gbox i input {
+  margin: 10px auto;
+  display: block;
 }
 
 p.fbtime {
@@ -37,45 +49,6 @@ p.fbinfo {
   border-bottom: #ececec 1px solid;
 }
 
-.fb:nth-child(8n-7) ul {
-  background: url(../../../../../assets/images/tx10.jpg) no-repeat top 20px left 10px;
-}
-
-.fb:nth-child(8n-6) ul {
-  background: url(../../../../../assets/images/tx9.jpg) no-repeat top 20px left 10px;
-}
-
-.fb:nth-child(8n-5) ul {
-  background: url(../../../../../assets/images/tx8.jpg) no-repeat top 20px left 10px;
-}
-
-.fb:nth-child(8n-4) ul {
-  background: url(../../../../../assets/images/tx7.jpg) no-repeat top 20px left 10px;
-}
-
-.fb:nth-child(8n-3) ul {
-  background: url(../../../../../assets/images/tx6.jpg) no-repeat top 20px left 10px;
-}
-
-.fb:nth-child(8n-2) ul {
-  background: url(../../../../../assets/images/tx5.jpg) no-repeat top 20px left 10px;
-}
-
-.fb:nth-child(8n-1) ul {
-  background: url(../../../../../assets/images/tx4.jpg) no-repeat top 20px left 10px;
-}
-
-.fb:nth-child(8n) ul {
-  background: url(../../../../../assets/images/tx3.jpg) no-repeat top 20px left 10px;
-}
-
-.fb:first-child ul {
-  background: url(../../../../../assets/images/tx2.jpg) no-repeat top 20px left 10px;
-}
-
-.fb:last-child ul {
-  background: url(../../../../../assets/images/tx1.jpg) no-repeat top 20px left 10px;
-}
 
 .hf ul {
   padding: 10px 20px;

@@ -2,24 +2,23 @@
   <div class="about_me">
     <h2>关于我</h2>
     <ul>
-      <i><img src="../../../../../assets/images/4.jpg"></i>
-      <p><b>杨青</b>，一个80后草根女站长！09年入行。一直潜心研究web前端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。</p>
+      <i><img src="../../../../../assets/images/timg.gif"></i>
+      <p><b>Eternallyc</b>，一个95后的小伙子！2016年正式进入吉首大学学习IT技术。现在正值大三，在这个两年的学习中，不断学习前端和后端知识，努力向人工智能靠近。。</p>
     </ul>
   </div>
   <div class="wdxc">
     <h2>我的相册</h2>
     <ul>
-      <li><a href="/"><img src="../../../../../assets/images/7.jpg"></a></li>
-      <li><a href="/"><img src="../../../../../assets/images/8.jpg"></a></li>
-      <li><a href="/"><img src="../../../../../assets/images/9.jpg"></a></li>
-      <li><a href="/"><img src="../../../../../assets/images/10.jpg"></a></li>
-      <li><a href="/"><img src="../../../../../assets/images/11.jpg"></a></li>
-      <li><a href="/"><img src="../../../../../assets/images/12.jpg"></a></li>
+      <li *ngFor="let album of albumList">
+        <a href="/"><img [src]="album.picture.picture_url"></a>
+      </li>
     </ul>
   </div>
   <div class="search">
     <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
-      <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
+      <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);"
+             onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}"
+             onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
       <input name="show" value="title" type="hidden">
       <input name="tempid" value="1" type="hidden">
       <input name="tbname" value="news" type="hidden">
@@ -28,24 +27,17 @@
   </div>
   <div class="fenlei">
     <h2>文章分类</h2>
-    <ul>
-      <li><a href="/">学无止境（33）</a></li>
-      <li><a href="/">日记（19）</a></li>
-      <li><a href="/">慢生活（520）</a></li>
-      <li><a href="/">美文欣赏（40）</a></li>
+    <ul >
+      <li *ngFor="let classification of classificationlist" ><a [routerLink]="['../classification',classification.classification_id]">
+        <span class="title_online">{{classification.name}}</span>
+        <span class="count_right">{{classification.num}}篇</span>
+      </a></li>
     </ul>
   </div>
   <div class="tuijian">
-    <h2>站长推荐</h2>
+    <h2>推荐博客</h2>
     <ul>
-      <li><a href="/">你是什么人便会遇上什么人</a></li>
-      <li><a href="/">帝国cms 列表页调用子栏目，没有则不显示栏目名称</a></li>
-      <li><a href="/">第二届 优秀个人博客模板比赛参选活动</a></li>
-      <li><a href="/">个人博客模板《绅士》后台管理</a></li>
-      <li><a href="/">你是什么人便会遇上什么人</a></li>
-      <li><a href="/">帝国cms 列表页调用子栏目，没有则不显示栏目名称</a></li>
-      <li><a href="/">第二届 优秀个人博客模板比赛参选活动</a></li>
-      <li><a href="/">个人博客模板《绅士》后台管理</a></li>
+      <li *ngFor="let blog of recommendlist"><a href="/">{{blog.article_title}}</a></li>
     </ul>
   </div>
   <div class="links">

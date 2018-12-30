@@ -1,5 +1,5 @@
 {
-  "/api":{
+  "/blogs":{
     "target":"http://localhost:8081"
   }
 }
