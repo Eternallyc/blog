@@ -28,7 +28,39 @@ export class ClassificationbloglistComponent implements OnInit {
 
   ngOnInit() {
 
-
+  }
+// 默认排序
+  defaultsort() {
+    document.getElementById('timesort').className = 'btn-filter-sort';
+    document.getElementById('defaultsort').className = 'btn-filter-sort active';
+    document.getElementById('readnumsort').className = 'btn-filter-sort';
+    $('');
+    this.http.post('/blogs/classification/defaultsort', {'classification_id': this.classification_id})
+      .subscribe((req) => {
+        this.bloglist = req['list'];
+      });
   }
 
+  // 根据更新时间排序
+  timesort() {
+    document.getElementById('timesort').className = 'btn-filter-sort active';
+    document.getElementById('defaultsort').className = 'btn-filter-sort';
+    document.getElementById('readnumsort').className = 'btn-filter-sort';
+
+    this.http.post('/blogs/classification/timesort', {'classification_id': this.classification_id})
+      .subscribe((req) => {
+        this.bloglist = req['list'];
+      });
+  }
+
+  // 根据访问量排序
+  readnumsort() {
+    document.getElementById('timesort').className = 'btn-filter-sort';
+    document.getElementById('defaultsort').className = 'btn-filter-sort';
+    document.getElementById('readnumsort').className = 'btn-filter-sort active';
+    this.http.post('/blogs/classification/readnumsort', {'classification_id': this.classification_id})
+      .subscribe((req) => {
+        this.bloglist = req['list'];
+      });
+  }
 }

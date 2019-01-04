@@ -24,6 +24,7 @@ export class Album {
   photoalbum_id: number;
   title: string;
   troduction: string;
+  time: string;
   picture: Picture;
   read_number: number;
   like_number: number;

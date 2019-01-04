@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Blog, Classification} from '../leftside/leftside.component';
 import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-bloglistleft',
@@ -9,22 +10,48 @@ import {HttpClient} from '@angular/common/http';
 })
 export class BloglistleftComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  keyword:string = '';
+
+  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute, private router: Router) {
+   this.keyword = '';
+    activatedRoute.queryParams.subscribe(queryParams => {
+      this.keyword = queryParams.keyword; // 获得关键词
+    });
+  }
+
   classificationlist: Classification[]; // 分类
   recommendlist: Blog[]; // 推荐博客
+  clickrank: Blog[]; // 点击排行
   ngOnInit() {
-    this.http.get('/blogs/classification/simplelist')
+    this.http.get('/blogs/classification/classificationleft')
       .subscribe((req) => {
         this.classificationlist = req['simplelist'];
-      });
-
-    this.http.get('/blogs/article/getrecommendlist')
-      .subscribe((req) => {
         this.recommendlist = req['recommendlist'];
+        this.clickrank = req['clickranklist'];
       });
   }
-  change(){
+
+  change() {
     location.reload();
+  }
+
+  doOnInput(event) {
+    this.keyword = event.target.value;
+  }
+
+  search() {
+    if (this.keyword === '' || this.keyword === undefined) {
+      alert('请输入关键字词！！！');
+      event.preventDefault();
+      return;
+    }
+    event.preventDefault();
+    location.reload();
+    this.router.navigate(['../blog/search'], {
+      queryParams: {
+        keyword: this.keyword
+      }
+    });
   }
 
 }

@@ -1,90 +1,100 @@
+<app-leftside></app-leftside>
+<main>
+  <div class="picsbox">
+    <!--弹出层结束-->
+    <!--图片特效内容开始-->
+    <div class="piccontext">
+      <h2> {{album.title}} </h2>
+      <div class="source">
+        <div class="source_left"><span>相册</span><span>{{album.time}}</span><span> {{album.read_number}}人已阅读</span>
+        </div>
+      </div>
 
-<div class="htmleaf-container">
-  <div class="container gallery-container">
-
-    <h1>Bootstrap 3 Gallery</h1>
-
-    <div class="jq22-demo">
-      <a href="index.html" class="current">Clean Layout</a>
-      <a href="index2.html">Fluid Layout</a>
-      <a href="index3.html">Grid Layout</a>
-      <a href="index4.html">Thumbnails</a>
+      <!--列表展示-->
+      <div class="piclistshow" style="display: block;">
+        <ul>
+          <li *ngFor="let picture of picturelist">
+            <div class="picimg"><img
+              [src]="picture.picture.picture_url">
+            </div>
+            <div class="pictxt">
+              <h3>简单手工纸玫瑰</h3>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
 
-    <p class="page-description text-center">Clean Layout With Minimal Styles</p>
-
-    <div class="tz-gallery">
-
-      <div class="row">
-
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <a class="lightbox" href="../../../../../../assets/images/1.jpg">
-              <img src="../../../../../../assets/images/1.jpg" alt="Park">
-            </a>
-            <div class="caption">
-              <h3>Thumbnail label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <div class="pictext">
+      <ul>
+        {{album.troduction}}
+      </ul>
+    </div>
+    <div class="share">
+      <p class="diggit" (click)="pointlike()" style="cursor:pointer;"><a>
+        很赞哦！ </a>(<b id="diggnum">
+        {{album.like_number}}
+      </b>)
+      </p>
+    </div>
+    <div class="news_pl">
+      <h2>文章评论</h2>
+      <div class="gbko">
+        <div class="fb" *ngFor="let comment of commentlist">
+          <ul [style.backgroundImage]="'url('+ comment.avatar +')'" style="background-repeat: no-repeat;background-position
+:top 20px left 10px;">
+            <p class="fbtime"><span>{{comment.time}}</span> {{comment.username}}</p>
+            <p class="fbinfo">{{comment.content}}</p>
+            <div class="ecomment" [style.display]="comment.reply==null||comment.reply==='' ? 'none' : 'block'"><span
+              class="ecommentauthor">站长回复：</span>
+              <p class="ecommenttext">{{comment.reply}}</p>
+              <img attr.bigimg="{{comment.avatar}}">
             </div>
-          </div>
+          </ul>
         </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <a class="lightbox" href="../../../../../../assets/images/1.jpg">
-              <img src="../../../../../../assets/images/1.jpg" alt="Bridge">
-            </a>
-            <div class="caption">
-              <h3>Thumbnail label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
+        <form name="saypl" id="saypl">
+          <div id="plpost">
+            <p class="saying"><span><a href="/e/pl/?classid=77&amp;id=106">共有<script type="text/javascript"
+                                                                                     src="/e/public/ViewClick/?classid=77&amp;id=106&amp;down=2"></script>{{commentlist.length}}条评论</a></span>来说两句吧...
+            </p>
+            <p class="yname"><span>用户名:</span>
+              <input name="username" type="text" class="inputText" id="username" [value]="username" size="16"
+                     (input)="doOnInput($event)">
+            </p>
+            <p><span>选择头像:</span> *</p>
+            <p id="Avatar">
+              <i>
+                <img id="a" src="../../../../../../assets/images/tx1.jpg" (click)="myFun('a')"
+                     style="opacity: 1;cursor: pointer;"></i>
+              <i>
+                <img id="b" src="../../../../../../assets/images/tx2.jpg" (click)="myFun('b')"
+                     style="opacity: 0.5;cursor: pointer;"></i>
+              <i>
+                <img id="c" src="../../../../../../assets/images/tx3.jpg" (click)="myFun('c')"
+                     style="opacity: 0.5;cursor: pointer;"></i> <i>
+              <img id="d" src="../../../../../../assets/images/tx4.jpg " (click)="myFun('d')"
+                   style="opacity: 0.5;cursor: pointer;"></i>
+              <i>
+                <img id="e" src="../../../../../../assets/images/tx5.jpg" (click)="myFun('e')"
+                     style="opacity: 0.5;cursor: pointer;"></i>
+              <i>
+                <img id="f" src="../../../../../../assets/images/tx6.jpg" (click)="myFun('f')"
+                     style="opacity: 0.5;cursor: pointer;"></i>
+              <i>
+                <img id="g" src="../../../../../../assets/images/tx7.jpg" (click)="myFun('g')"
+                     style="opacity: 0.5;cursor: pointer;"></i>
+              <i>
+                <img id="h" src="../../../../../../assets/images/tx8.jpg" (click)="myFun('h')"
+                     style="opacity: 0.5;cursor: pointer;"></i>
+            </p>
+            <br> <br> <br>
+            <p><span class="tnr">留言内容:</span>
+              <textarea name="saytext" rows="6" id="saytext" [value]="content"
+                        (input)="doOnInputContent($event)"></textarea>
+            </p><input name="imageField" type="submit" value="提交" (click)="onsubmit()" style="cursor: pointer;">
           </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <a class="lightbox" href="../../../../../../assets/images/1.jpg">
-              <img src="../../../../../../assets/images/1.jpg" alt="Tuneel">
-            </a>
-            <div class="caption">
-              <h3>Thumbnail label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <a class="lightbox" href="../../../../../../assets/images/1.jpg">
-              <img src="../../../../../../assets/images/1.jpg" alt="Coast">
-            </a>
-            <div class="caption">
-              <h3>Thumbnail label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <a class="lightbox" href="../../../../../../assets/images/1.jpg">
-              <img src="../../../../../../assets/images/1.jpg" alt="Rails">
-            </a>
-            <div class="caption">
-              <h3>Thumbnail label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <a class="lightbox" href="../../../../../../assets/images/1.jpg">
-              <img src="../../../../../../assets/images/1.jpg" alt="Traffic">
-            </a>
-            <div class="caption">
-              <h3>Thumbnail label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
-</div>
-
+</main>

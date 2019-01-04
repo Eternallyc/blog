@@ -20,10 +20,11 @@
       <form>
         <p><strong>来说点儿什么吧...</strong></p>
         <p><span> 您的姓名:</span>
-          <input name="name" type="text" id="name" [value]="username" (input)="doOnInput($event)" >
+          <input name="name" type="text" id="name" [value]="username" (input)="doOnInput($event)">
           *</p>
         <p><span>选择头像:</span> *</p>
-        <p id="Avatar"><i>
+        <p id="Avatar">
+          <i>
           <img id="a" src="../../../../../assets/images/tx1.jpg" (click)="myFun('a')"
                style="opacity: 1;cursor: pointer;"></i> <i>
           <img id="b" src="../../../../../assets/images/tx2.jpg" (click)="myFun('b')"
@@ -46,7 +47,8 @@
                  style="opacity: 0.5;cursor: pointer;"></i>
         </p>
         <p><span class="tnr">留言内容:</span>
-          <textarea name="lytext" cols="60" rows="12" id="lytext" [value]="content" (input)="doOnInputContent($event)"></textarea>
+          <textarea name="lytext" cols="60" rows="12" id="lytext" [value]="content"
+                    (input)="doOnInputContent($event)"></textarea>
         </p>
         <p>
           <input type="submit" name="Submit3" value="提交" (click)="onsubmit()">

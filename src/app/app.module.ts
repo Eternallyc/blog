@@ -17,8 +17,29 @@ import { HttpClientModule } from '@angular/common/http';
 import { BloglistleftComponent } from './blog/content/leftsides/bloglistleft/bloglistleft.component';
 import { ClassificationbloglistComponent } from './blog/content/rightsides/blog/classificationbloglist/classificationbloglist.component';
 import { SearchbloglistComponent } from './blog/content/rightsides/blog/searchbloglist/searchbloglist.component';
-
-
+import { SearchkeywordPipe } from './pipe/searchkeyword.pipe';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgxEchartsModule} from 'ngx-echarts';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
+import { LoginComponent } from './manage/login/login.component';
+import { HomeComponent } from './manage/right/home/home.component';
+import { PersonalcenterComponent } from './manage/right/personalcenter/personalcenter.component';
+import { CommentmanageComponent } from './manage/right/commentmanage/commentmanage.component';
+import { LeavemessagemanageComponent } from './manage/right/leavemessagemanage/leavemessagemanage.component';
+import { ClassificationmanageComponent } from './manage/right/classificationmanage/classificationmanage.component';
+import { ManageletfsideComponent } from './manage/left/manageletfside/manageletfside.component';
+import { ManagerightheadComponent } from './manage/managerighthead/managerighthead.component';
+import { ManagepageComponent } from './manage/managepage/managepage.component';
+import { ManagefooterComponent } from './manage/managefooter/managefooter.component';
+import {LoginGuard} from './manage/guard/login.guard';
+import {CookieService} from 'ngx-cookie-service';
 const appRoutes: Routes = [
   {path: 'blog', component: BlogpageComponent,
   children: [
@@ -31,8 +52,12 @@ const appRoutes: Routes = [
     { path: 'album/:id', component: AlbumcontentComponent},
     { path: 'classification/:classification_id', component: ClassificationbloglistComponent}
   ]},
-  { path: '', component: BlogpageComponent, children: [
-      { path: '', component: IndexComponent }]},
+  {path: 'login', component: LoginComponent},
+  {path: 'manage', component: ManagepageComponent,
+  children: [
+    {path: 'home', component: HomeComponent, canActivate: [LoginGuard]},
+    {path: 'classification', component: ClassificationmanageComponent},
+  ]},
   { path: '**', component: Code404Component}
 ];
 @NgModule({
@@ -51,7 +76,18 @@ const appRoutes: Routes = [
     Code404Component,
     BloglistleftComponent,
     ClassificationbloglistComponent,
-    SearchbloglistComponent
+    SearchbloglistComponent,
+    SearchkeywordPipe,
+    LoginComponent,
+    HomeComponent,
+    PersonalcenterComponent,
+    CommentmanageComponent,
+    LeavemessagemanageComponent,
+    ClassificationmanageComponent,
+    ManageletfsideComponent,
+    ManagerightheadComponent,
+    ManagepageComponent,
+    ManagefooterComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -59,10 +95,11 @@ const appRoutes: Routes = [
       { enableTracing: true }
     ),
     BrowserModule,
+    BrowserAnimationsModule, // 导入动画模块
     HttpClientModule,
-
+    NgxEchartsModule,
   ],
-  providers: [],
+  providers: [LoginGuard, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -39,7 +39,7 @@ export class IndexComponent implements OnInit {
   }
 
   // 根据更新时间排序
-  timesort(obj) {
+  timesort() {
     document.getElementById('timesort').className = 'btn-filter-sort active';
     document.getElementById('defaultsort').className = 'btn-filter-sort';
     document.getElementById('readnumsort').className = 'btn-filter-sort';
