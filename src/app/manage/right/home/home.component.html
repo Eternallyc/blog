@@ -1,0 +1,422 @@
+<div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="ibox ">
+        <div class="ibox-title">
+          <span class="label label-success float-right">总量</span>
+          <h5>阅读量</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{{allreadnum}}</h1>
+          <small>总阅读量</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="ibox ">
+        <div class="ibox-title">
+          <span class="label label-info float-right">总量</span>
+          <h5>评论量</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{{allcommentnum}}</h1>
+          <small>总评论量</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="ibox ">
+        <div class="ibox-title">
+          <span class="label label-primary float-right">总量</span>
+          <h5>点赞量</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{{alllikenum}}</h1>
+          <small>总点赞量</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="ibox ">
+        <div class="ibox-title">
+          <span class="label label-warning float-right">总量</span>
+          <h5>留言量</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{{allleavemessagenum}}</h1>
+          <small>总留言量</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox ">
+        <div class="ibox-title">
+          <h5>分类详情</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div class="flot-chart-content" id="flot-dashboard-chart" echarts [options]="classification"
+                     style="position:relative;left:-8%;top:-20%;width: 108%;height: 145%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="ibox ">
+            <div class="ibox-title">
+              <h5>用户项目列表</h5>
+              <div class="ibox-tools">
+                <a class="collapse-link">
+                  <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="close-link">
+                  <i class="fa fa-times"></i>
+                </a>
+              </div>
+            </div>
+            <div class="ibox-content table-responsive">
+              <table class="table table-hover no-margins">
+                <thead>
+                <tr>
+                  <th>状态</th>
+                  <th>日期</th>
+                  <th>用户</th>
+                  <th>值</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>
+                    <small>进行中...</small>
+                  </td>
+                  <td><i class="fa fa-clock-o"></i> 11:20</td>
+                  <td>小明</td>
+                  <td class="text-navy"><i class="fa fa-level-up"></i> 24%</td>
+                </tr>
+                <tr>
+                  <td><span class="label label-warning">已取消</span></td>
+                  <td><i class="fa fa-clock-o"></i> 10:40</td>
+                  <td>小明</td>
+                  <td class="text-navy"><i class="fa fa-level-up"></i> 66%</td>
+                </tr>
+                <tr>
+                  <td>
+                    <small>进行中...</small>
+                  </td>
+                  <td><i class="fa fa-clock-o"></i> 01:30</td>
+                  <td>小明</td>
+                  <td class="text-navy"><i class="fa fa-level-up"></i> 54%</td>
+                </tr>
+                <tr>
+                  <td>
+                    <small>进行中...</small>
+                  </td>
+                  <td><i class="fa fa-clock-o"></i> 02:20</td>
+                  <td>小明</td>
+                  <td class="text-navy"><i class="fa fa-level-up"></i> 12%</td>
+                </tr>
+                <tr>
+                  <td>
+                    <small>进行中...</small>
+                  </td>
+                  <td><i class="fa fa-clock-o"></i> 09:40</td>
+                  <td>小明</td>
+                  <td class="text-navy"><i class="fa fa-level-up"></i> 22%</td>
+                </tr>
+                <tr>
+                  <td><span class="label label-primary">已完成</span></td>
+                  <td><i class="fa fa-clock-o"></i> 04:10</td>
+                  <td>小明</td>
+                  <td class="text-navy"><i class="fa fa-level-up"></i> 66%</td>
+                </tr>
+                <tr>
+                  <td>
+                    <small>进行中...</small>
+                  </td>
+                  <td><i class="fa fa-clock-o"></i> 12:08</td>
+                  <td>小明</td>
+                  <td class="text-navy"><i class="fa fa-level-up"></i> 23%</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="ibox ">
+            <div class="ibox-title">
+              <h5>全球交易</h5>
+              <div class="ibox-tools">
+                <a class="collapse-link">
+                  <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="close-link">
+                  <i class="fa fa-times"></i>
+                </a>
+              </div>
+            </div>
+            <div class="ibox-content">
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <table class="table table-hover margin bottom">
+                    <thead>
+                    <tr>
+                      <th style="width: 1%" class="text-center">ID</th>
+                      <th>物品</th>
+                      <th class="text-center">日期</th>
+                      <th class="text-center">销售额度</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td> 安全门
+                      </td>
+                      <td class="text-center small">2017年6月16日</td>
+                      <td class="text-center"><span
+                        class="label label-primary">$483.00</span></td>
+
+                    </tr>
+                    <tr>
+                      <td class="text-center">2</td>
+                      <td> 衣柜
+                      </td>
+                      <td class="text-center small">2017年6月16日</td>
+                      <td class="text-center"><span
+                        class="label label-primary">$327.00</span></td>
+
+                    </tr>
+                    <tr>
+                      <td class="text-center">3</td>
+                      <td> 一套工具
+                      </td>
+                      <td class="text-center small">2017年6月16日</td>
+                      <td class="text-center"><span
+                        class="label label-warning">$125.00</span></td>
+
+                    </tr>
+                    <tr>
+                      <td class="text-center">4</td>
+                      <td> 全景照片</td>
+                      <td class="text-center small">2017年6月16日</td>
+                      <td class="text-center"><span
+                        class="label label-primary">$344.00</span></td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">5</td>
+                      <td>手机</td>
+                      <td class="text-center small">2017年6月16日</td>
+                      <td class="text-center"><span
+                        class="label label-primary">$235.00</span></td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">6</td>
+                      <td>显示器</td>
+                      <td class="text-center small">2017年6月16日</td>
+                      <td class="text-center"><span
+                        class="label label-primary">$100.00</span></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-lg-6">
+                  <div id="world-map" style="height: 300px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="ibox ">
+            <div class="ibox-title">
+              <h5>用户项目列表</h5>
+              <div class="ibox-tools">
+                <a class="collapse-link">
+                  <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="close-link">
+                  <i class="fa fa-times"></i>
+                </a>
+              </div>
+            </div>
+            <div class="ibox-content table-responsive">
+              <table class="table table-hover no-margins">
+                <thead>
+                <tr>
+                  <th>状态</th>
+                  <th>日期</th>
+                  <th>用户</th>
+                  <th>值</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>
+                    <small>进行中...</small>
+                  </td>
+                  <td><i class="fa fa-clock-o"></i> 11:20</td>
+                  <td>小明</td>
+                  <td class="text-navy"><i class="fa fa-level-up"></i> 24%</td>
+                </tr>
+                <tr>
+                  <td><span class="label label-warning">已取消</span></td>
+                  <td><i class="fa fa-clock-o"></i> 10:40</td>
+                  <td>小明</td>
+                  <td class="text-navy"><i class="fa fa-level-up"></i> 66%</td>
+                </tr>
+                <tr>
+                  <td>
+                    <small>进行中...</small>
+                  </td>
+                  <td><i class="fa fa-clock-o"></i> 01:30</td>
+                  <td>小明</td>
+                  <td class="text-navy"><i class="fa fa-level-up"></i> 54%</td>
+                </tr>
+                <tr>
+                  <td>
+                    <small>进行中...</small>
+                  </td>
+                  <td><i class="fa fa-clock-o"></i> 02:20</td>
+                  <td>小明</td>
+                  <td class="text-navy"><i class="fa fa-level-up"></i> 12%</td>
+                </tr>
+                <tr>
+                  <td>
+                    <small>进行中...</small>
+                  </td>
+                  <td><i class="fa fa-clock-o"></i> 09:40</td>
+                  <td>小明</td>
+                  <td class="text-navy"><i class="fa fa-level-up"></i> 22%</td>
+                </tr>
+                <tr>
+                  <td><span class="label label-primary">已完成</span></td>
+                  <td><i class="fa fa-clock-o"></i> 04:10</td>
+                  <td>小明</td>
+                  <td class="text-navy"><i class="fa fa-level-up"></i> 66%</td>
+                </tr>
+                <tr>
+                  <td>
+                    <small>进行中...</small>
+                  </td>
+                  <td><i class="fa fa-clock-o"></i> 12:08</td>
+                  <td>小明</td>
+                  <td class="text-navy"><i class="fa fa-level-up"></i> 23%</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="ibox ">
+            <div class="ibox-title">
+              <h5>全球交易</h5>
+              <div class="ibox-tools">
+                <a class="collapse-link">
+                  <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="close-link">
+                  <i class="fa fa-times"></i>
+                </a>
+              </div>
+            </div>
+            <div class="ibox-content">
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <table class="table table-hover margin bottom">
+                    <thead>
+                    <tr>
+                      <th style="width: 1%" class="text-center">ID</th>
+                      <th>物品</th>
+                      <th class="text-center">日期</th>
+                      <th class="text-center">销售额度</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td> 安全门
+                      </td>
+                      <td class="text-center small">2017年6月16日</td>
+                      <td class="text-center"><span
+                        class="label label-primary">$483.00</span></td>
+
+                    </tr>
+                    <tr>
+                      <td class="text-center">2</td>
+                      <td> 衣柜
+                      </td>
+                      <td class="text-center small">2017年6月16日</td>
+                      <td class="text-center"><span
+                        class="label label-primary">$327.00</span></td>
+
+                    </tr>
+                    <tr>
+                      <td class="text-center">3</td>
+                      <td> 一套工具
+                      </td>
+                      <td class="text-center small">2017年6月16日</td>
+                      <td class="text-center"><span
+                        class="label label-warning">$125.00</span></td>
+
+                    </tr>
+                    <tr>
+                      <td class="text-center">4</td>
+                      <td> 全景照片</td>
+                      <td class="text-center small">2017年6月16日</td>
+                      <td class="text-center"><span
+                        class="label label-primary">$344.00</span></td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">5</td>
+                      <td>手机</td>
+                      <td class="text-center small">2017年6月16日</td>
+                      <td class="text-center"><span
+                        class="label label-primary">$235.00</span></td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">6</td>
+                      <td>显示器</td>
+                      <td class="text-center small">2017年6月16日</td>
+                      <td class="text-center"><span
+                        class="label label-primary">$100.00</span></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-lg-6">
+                  <div id="world-map" style="height: 300px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
