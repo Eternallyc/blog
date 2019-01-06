@@ -4,3 +4,22 @@
   position: relative;
   background: #2f4050;;
 }
+
+#blogmanage > li {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+#blogmanage > li > a {
+  color: #a7b1c2;
+  font-weight: 600;
+  padding: 14px 20px 14px 55px;
+  display: block;
+}
+#blogmanage > li > a:hover {
+  color: #ffffff;
+}
+
+#blogmanage > li.active > a{
+  color: #ffffff;
+}

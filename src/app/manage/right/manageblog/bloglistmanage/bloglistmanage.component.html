@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="../../../../assets/css/bootstrap.css" xmlns="">
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox ">
+        <div class="ibox-title">
+          <h5>博客管理</h5>
+          <div class="row" style="margin-top: 20px;">
+            <div class="col-lg-6" style="float: right">
+              <div class="input-group">
+                <input type="text" class="form-control" style="width: 300px;"
+                       placeholder="请输入博客标题关键词" value="{{blogtitle}}"
+                       (input)="doOnInput($event.target.value)">
+                <span class="input-group-btn">
+						<button class="btn btn-default" type="button" style="margin-left:10px;background:#009688;color:white;"
+                    (click)="search()">搜索博客
+						</button>
+					</span>
+              </div>
+            </div>
+          </div>
+          <div class="ibox-tools">
+            <a class="collapse-link">
+              <i class="fa fa-chevron-up"></i>
+            </a>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="article-list-item" *ngFor="let blog of bloglist">
+            <div class="list-item-title">
+              <span class="article-list-item-tag" [style.display]="blog.recommend==0? 'none' : 'block'" style="color: red;">推荐</span>
+              <span class="article-list-item-tag" [style.display]="blog.topping===1&&blog.state=='1' ? 'block' : 'none'">置顶</span>
+              <span class="article-list-item-tag" [style.display]="blog.state=='1' ? 'none' : 'block'">草稿</span>
+              <p class="article-list-item-txt">
+                <a [routerLink]="['../write',blog.article_id]" title="编辑" [innerHTML]="blog.article_title">JAVAWEB实现短信验证---梦网云</a>
+              </p>
+            </div>
+            <div class="article-list-item-info">
+              <div class="item-info-left">
+                <span class="">{{blog.article_time}}</span>
+                <span class=""><span class="eternallyc icon-eternallyc-read"
+                                     style="position: relative; top:2px;"></span> {{blog.read_number}} </span>
+                <span class=""><span class="eternallyc icon-eternallyc-comment"
+                                     style="position: relative; top:2px;"></span> {{blog.comment_number}}</span>
+              </div>
+              <div class="item-info-oper">
+                <a  data-aid="82430331" [routerLink]="['../../../blog/blogconent/',blog.article_id]"><span >查看</span></a>
+                <a  data-aid="82430331" (click)="istop(blog.article_id,blog.topping)" [style.display]="blog.state=='0' ? 'none' : 'inline'"><span class="setTop" data-opt="false" >{{blog.topping===1?"取消置顶":"置顶"}}</span></a>
+                <a  data-aid="82430331"><span class="del" (click)="delete(blog.article_id,blog.classification.classification_id)">删除</span></a>
+                <a  data-aid="82430331" [style.display]="blog.state=='0' ? 'none' : 'inline'"><span class="del" (click)="recommend(blog.article_id,blog.recommend)">{{blog.recommend===1?"取消推荐":"推荐"}}</span></a>
+              </div>
+            </div>
+          </div>
+          <!-- 分页-->
+          <div class="pagination-wrapper">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item" [style.display]="locate===1?'none':'block'"><a (click)="Previous()" class="page-link"
+                                         data-ci-pagination-page="1" rel="prev"><span aria-hidden="true"><svg
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="10" height="10"><path
+                  d="M212.8 511.872c0-8.192 4.16-17.44 10.336-23.552L701.152 10.24c6.144-6.144 15.392-10.24 23.584-10.24s17.44 4.096 23.552 10.208l51.328 51.328c6.112 6.112 10.208 15.36 10.208 23.552s-4.096 17.44-10.208 23.552L396.48 511.872l403.168 403.168c6.112 6.112 10.208 15.36 10.208 23.552 0 9.248-4.096 17.44-10.208 23.552l-51.328 51.328c-6.112 6.112-15.36 10.208-23.552 10.208s-17.44-4.096-23.552-10.208L223.136 535.424a35.2 35.2 0 0 1-10.336-23.552z"
+                  p-id="17489" fill="#999999"></path></svg></span></a></li>
+                <li class="page-item active"><a class="page-link"
+                                         data-ci-pagination-page="1" rel="start">{{locate}}</a></li>
+                <li class="page-item" [style.display]="locatenext1>=allcount?'none':'block'" >
+                  <a (click)="change(locatenext1)" class="page-link" data-ci-pagination-page="2">{{locatenext1}}</a></li>
+
+                <li class="page-item" [style.display]="locatenext2>=allcount?'none':'block'" ><a (click)="change(locatenext2)" class="page-link"
+                                         data-ci-pagination-page="3">{{locatenext2}}</a></li>
+                <li class="page-item" [style.display]="locate>=allcount-3||locate>=allcount?'none':'block'"><a class="page-link" (click)="change(locate+3)">...</a></li>
+
+                <li class="page-item"><a (click)="change(allcount)" class="page-link"
+                                         data-ci-pagination-page="17" [style.display]="locate===allcount?'none':'block'">{{allcount}}</a></li>
+                <li class="page-item" [style.display]="locate===allcount?'none':'block'"><a (click)="next()" class="page-link"
+                                         data-ci-pagination-page="3" rel="next"><span aria-hidden="true"><svg
+                  viewBox="0 0 1024 1024" width="10" height="10"><path
+                  d="M214.089143 122.660571L603.428571 512 214.089143 901.339429a18.285714 18.285714 0 0 0 0 25.892571l83.821714 83.821714a18.285714 18.285714 0 0 0 25.892572 0l486.107428-486.107428a18.285714 18.285714 0 0 0 0-25.892572L323.803429 12.946286a18.285714 18.285714 0 0 0-25.892572 0L214.089143 96.768a18.285714 18.285714 0 0 0 0 25.892571z"
+                  p-id="18060" fill="#999999"></path></svg></span></a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

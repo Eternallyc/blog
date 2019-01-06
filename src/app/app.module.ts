@@ -40,6 +40,13 @@ import { ManagepageComponent } from './manage/managepage/managepage.component';
 import { ManagefooterComponent } from './manage/managefooter/managefooter.component';
 import {LoginGuard} from './manage/guard/login.guard';
 import {CookieService} from 'ngx-cookie-service';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { QuillModule } from 'ngx-quill';
+import { BloglistmanageComponent } from './manage/right/manageblog/bloglistmanage/bloglistmanage.component';
+import { WriteblogComponent } from './manage/right/manageblog/writeblog/writeblog.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BloglistmanagesecondaryComponent } from './manage/right/manageblog/bloglistmanagesecondary/bloglistmanagesecondary.component';
 const appRoutes: Routes = [
   {path: 'blog', component: BlogpageComponent,
   children: [
@@ -57,6 +64,12 @@ const appRoutes: Routes = [
   children: [
     {path: 'home', component: HomeComponent, canActivate: [LoginGuard]},
     {path: 'classification', component: ClassificationmanageComponent},
+    {path: 'blogmanage',
+    children: [
+      {path: 'write', component: WriteblogComponent},
+      {path: 'write/:id', component: WriteblogComponent},
+      {path: 'bloglistmanage', component: BloglistmanageComponent}
+    ]},
   ]},
   { path: '**', component: Code404Component}
 ];
@@ -87,7 +100,10 @@ const appRoutes: Routes = [
     ManageletfsideComponent,
     ManagerightheadComponent,
     ManagepageComponent,
-    ManagefooterComponent
+    ManagefooterComponent,
+    BloglistmanageComponent,
+    WriteblogComponent,
+    BloglistmanagesecondaryComponent,
   ],
   imports: [
     RouterModule.forRoot(
@@ -98,6 +114,9 @@ const appRoutes: Routes = [
     BrowserAnimationsModule, // 导入动画模块
     HttpClientModule,
     NgxEchartsModule,
+    EditorModule,
+    QuillModule,
+    FormsModule
   ],
   providers: [LoginGuard, CookieService],
   bootstrap: [AppComponent]

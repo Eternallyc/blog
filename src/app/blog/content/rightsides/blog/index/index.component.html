@@ -18,7 +18,7 @@
       <h3>
         <b style="color: red;">[ 顶 ] </b> <a [routerLink]="['../blogconent',article.article_id]">{{article.article_title}}</a>
       </h3>
-      <p>{{article.article_content.substring(0,60)}}...</p>
+      <p [innerHTML]="article.article_content.substring(0,100)">...</p>
       <div class="info-box d-flex align-content-center">
         <p>
           <span class="date">{{article.article_time}}</span>

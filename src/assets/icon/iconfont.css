@@ -1,0 +1,25 @@
+@font-face {font-family: "eternallyc";
+  src: url('iconfont.eot?t=1546675546162'); /* IE9 */
+  src: url('iconfont.eot?t=1546675546162#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAPYAAsAAAAACFgAAAOJAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqEJINPATYCJAMMCwgABCAFhQUHORswB8ieA247vDrJSn2dvF/MXD5oV/8ymcVlDqbL++7E3u6odrfW8pmr2klJAUkgWlfYucvtw8JPLk9KtEZVqFbINkBA0ewGCDA77/NcUy95Qt8GIFGpnVRBE9jzAukGOpIFyITnumV4rUud2K37QAAwGLJHwiNvXiIZ8GDLCABSX6NkJJMzgW/IJpCCQIzs5UGWIYKUm+FuA1gKP0++wDUpwEFEwdYm79SPHFznQzQdlg3L9wmIp3MAEA8BFIA9gAdIIerKFo9D9iiYrko0J4vBg4CbyiuTEYoMjXijfzwOIGKwTHkAgDUouYsSu3wgwIcLIahx/YcAMQABwAUA94BV9/OQeMgxuYWjkIdf36d49qo+d3DNQ5jbGtlk7OgkoSOnBKW5Ezrc9nFzNqueLr5n13c0Mr7mtLLyF24Y0cO7zevHh0/MnRo5mRWN6ZOffewdf/f7lJFJx8EPnxAU5p74xPR0xP09szg5RUQjJ9uZSJhLSEg8VWKz6aKke4JQz9bVsaEhbBEykkH7a5FNTbaejmnLqMA61/0Pt+0so1+ozFnlTqqfZFXKXbUvqi6xfX30C+lSfiAtq33rvInabeXKYUdUKwn/W29SVrT3uh9uGD4dDqYn8T4mZnihP2Mju1cR2SZPWbSFi36xrUg5vDyrFK5c7GfppCJWcbJU1twceu74PNDlg3LKksXzIu8S5Q8ugc9dVh4XS9wkxY+bpW7S/7G2Od8tO0T1jxDILDeKsYX0GKWA7DsPqvqDvwO1tc4UKfn/kwo8AOC5mMwNJd08gPT23QT4neKOLbwhZWbKayJXZEUpqqRflhHMUOMn5gKAqrfDNRqdMwECBo0UHCQwAgWDJcmzzhBBgC/EYIgAg52kwwLU9IqD8HIAbC0QEKi7AA6KuAUKdS9Inv0GETQjEEM9LTBkZnemAMtGWFgrSkYfSidQ4zkbON/gXEU7kpVaT7wnVAMtqVASPyOQwo6z4OLoXBE9R4s01Ya2odps5wAqyRmIHPUx1NpBM7kuerxazdzfcnKqxDhaLXMmkkMYgiSGfKDUBKjhcazAD7EcKhonEUvStAmZ9QQpA5qcoApULauE6Ap1ph0duHDk3Ik8V1mk4tYmtxlSNrVjASyqRBwDRG5WhROEHNCMO7qQhtiq6gGBvi1OdqfKrqrVQ2vMu+4BYGCFlHCEEh7SM0wwaHmDf1KnH4kAAAAA') format('woff2'),
+  url('iconfont.woff?t=1546675546162') format('woff'),
+  url('iconfont.ttf?t=1546675546162') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1546675546162#eternallyc') format('svg'); /* iOS 4.1- */
+}
+
+.eternallyc {
+  font-family: "eternallyc" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-eternallyc-comment:before {
+  content: "\e719";
+}
+
+.icon-eternallyc-read:before {
+  content: "\e748";
+}
+

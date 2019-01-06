@@ -13,7 +13,9 @@ export class LoginGuard implements CanActivate {
   }
 
   canActivate() {
+    /*alert(this.cookie.get('message'));*/
     if (this.cookie.get('message') === '') {
+
       alert('你还没有登录,请登录后重试！');
       this.router.navigateByUrl('login');
       return false;

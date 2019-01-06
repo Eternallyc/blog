@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
+import {Classification} from '../../../blog/content/leftsides/leftside/leftside.component';
 
 @Component({
   selector: 'app-home',
@@ -23,95 +24,262 @@ export class HomeComponent implements OnInit {
   allcommentnum: number; // 总评论量
   alllikenum: number; // 总点赞量
   allleavemessagenum: number; // 总留言量
-  constructor( private http: HttpClient, private cookies: CookieService) {
+
+  classificationlist: Classification[]; // 所有分类列表
+  classificationlistreadnum: number[]; // 获取所有分类的阅读量
+  classificationlistlikenum: number[]; // 获取所有分类的点赞量
+  classificationlistcommentnum: number[]; // 获取所有分类的评论量
+
+  classificationlistname: string[] = []; // 获得所有分类名
+
+
+  options = TREE_OPTION;
+  mergeData = null;
+
+  options1 = TREE_OPTION1;
+  mergeData1 = null;
+
+  constructor(private http: HttpClient, private cookies: CookieService) {
     this.httpOptions = {
       headers: new HttpHeaders({
         'Authorization': this.cookies.get('message')
       })
     };
-    this.classification = {
-      tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-          type: 'cross',
-          crossStyle: {
-            color: '#999'
-          }
-        }
-      },
-      toolbox: {
-        feature: {
-          dataView: {show: true, readOnly: false},
-          magicType: {show: true, type: ['line', 'bar']},
-          restore: {show: true},
-          saveAsImage: {show: true}
-        }
-      },
-      legend: {
-        data: ['访问量', '阅读量', '评论量']
-      },
-      xAxis: [
-        {
-          type: 'category',
-          data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
-          axisPointer: {
-            type: 'shadow'
-          }
-        }
-      ],
-      yAxis: [
-        {
-          type: 'value',
-          name: '数量',
-          min: 0,
-          max: 250,
-          interval: 50,
-          axisLabel: {
-            formatter: '{value}'
-          }
-        },
-        {
-          type: 'value',
-          name: '数量',
-          min: 0,
-          max: 250,
-          interval: 50,
-          axisLabel: {
-            formatter: '{value} '
-          }
-        }
-      ],
-      series: [
-        {
-          name: '访问量',
-          type: 'bar',
-          data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-        },
-        {
-          name: '阅读量',
-          type: 'bar',
-          data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-        },
-        {
-          name: '评论量',
-          type: 'line',
-          yAxisIndex: 1,
-          data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
-        }
-      ]
-    };
 
-    this.http.get('/blogs/admin/dateShow', this.httpOptions)
-      .subscribe((req) => {
-      this.allreadnum = req['readnum'];
-      this.allcommentnum = req['commentnum'];
-      this.alllikenum = req['likenum'];
-      this.allleavemessagenum = req['leavemessagenum'];
-      });
 
   }
 
   ngOnInit() {
+    this.http.get('/blogs/admin/dateShow', this.httpOptions)
+      .subscribe((req) => {
+        this.allreadnum = req['readnum']; // 总阅读量
+        this.allcommentnum = req['commentnum']; // 总评论量
+        this.alllikenum = req['likenum']; // 总点赞量
+        this.allleavemessagenum = req['leavemessagenum']; // 总留言量
+        this.classificationlist = req['classificationlist']; // 所有分类列表
+        this.classificationlistreadnum = req['classificationlistreadnum']; // 获取所有分类的阅读量
+        this.classificationlistlikenum = req['classificationlistlikenum'];  // 获取所有分类的点赞量
+        this.classificationlistcommentnum = req['classificationlistcommentnum']; // 获取所有分类的评论量
+        for (let i = 0; i < this.classificationlist.length; i++) {
+          this.classificationlistname[i] = this.classificationlist[i].name;
+        }
+        let maxnum = 0;
+        for (let i = 0; i < this.classificationlistreadnum.length; i++) {
+          if (maxnum < this.classificationlistreadnum[i]) {
+            maxnum = this.classificationlistreadnum[i];
+          }
+        }
+        for (let i = 0; i < this.classificationlistlikenum.length; i++) {
+          if (maxnum < this.classificationlistlikenum[i]) {
+            maxnum = this.classificationlistlikenum[i];
+          }
+        }
+        let maxnum1 = 0;
+        for (let i = 0; i < this.classificationlistcommentnum.length; i++) {
+          if (maxnum1 < this.classificationlistcommentnum[i]) {
+            maxnum1 = this.classificationlistcommentnum[i];
+          }
+        }
+        this.classification = {
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'cross',
+              crossStyle: {
+                color: '#999'
+              }
+            }
+          },
+          toolbox: {
+            feature: {
+              magicType: {show: true, type: ['line', 'bar']},
+              restore: {show: true},
+              saveAsImage: {show: true},
+            }, x: '79%'
+          },
+          legend: {
+            data: ['阅读量', '点赞量', '评论量']
+          },
+          xAxis: [
+            {
+              type: 'category',
+              data: this.classificationlistname,
+              axisPointer: {
+                type: 'shadow'
+              }
+            }
+          ],
+          yAxis: [
+            {
+              type: 'value',
+              name: '数量',
+              min: 0,
+              max: maxnum + 100,
+              interval: (maxnum + 100) / this.classificationlistlikenum.length,
+              axisLabel: {
+                formatter: '{value}'
+              }
+            },
+            {
+              type: 'value',
+              name: '评论数量',
+              min: 0,
+              max: maxnum1 + 5,
+              interval: (maxnum + 5) / this.classificationlistcommentnum.length,
+              axisLabel: {
+                formatter: '{value} '
+              }
+            }
+          ],
+          series: [
+            {
+              name: '阅读量',
+              type: 'bar',
+              data: this.classificationlistreadnum
+            },
+            {
+              name: '点赞量',
+              type: 'bar',
+              data: this.classificationlistlikenum
+            },
+            {
+              name: '评论量',
+              type: 'line',
+              yAxisIndex: 1,
+              data: this.classificationlistcommentnum
+            }
+          ]
+        };
+
+        const TREE_DATA_1 = {
+          'name': '博客',
+          'children': req['blogmap']
+        };
+        const TREE_DATA_2 = {
+          'name': '相册',
+          'children': req['albumlist']
+        };
+
+        // 博客分类图
+        TREE_OPTION.series[0].data = [TREE_DATA_1];
+
+        this.mergeData = {
+          series: TREE_OPTION.series
+        };
+
+
+        // 相册图
+        TREE_OPTION1.series[0].data = [TREE_DATA_2];
+
+        this.mergeData1 = {
+          series: TREE_OPTION1.series
+        };
+
+      });
+
   }
 
 }
+
+const TREE_OPTION = {
+  tooltip: {
+    trigger: 'item',
+    triggerOn: 'mousemove'
+  },
+  legend: {
+    top: '2%',
+    left: '3%',
+    orient: 'vertical',
+    data: [{
+      name: '博客',
+      icon: 'rectangle',
+    }],
+    borderColor: '#c23531'
+  },
+  series: [
+    {
+      type: 'tree',
+      name: '博客',
+      data: [],
+      top: '15%',
+      left: '7%',
+      bottom: '2%',
+      right: '60%',
+      symbolSize: 7,
+      label: {
+        normal: {
+          position: 'left',
+          verticalAlign: 'middle',
+          align: 'right'
+        }
+      },
+      leaves: {
+        label: {
+          normal: {
+            position: 'right',
+            verticalAlign: 'middle',
+            align: 'left'
+          }
+        }
+      },
+      expandAndCollapse: true,
+      animationDuration: 550,
+      animationDurationUpdate: 750
+
+    }
+  ]
+};
+
+
+const TREE_OPTION1 = {
+  tooltip: {
+    trigger: 'item',
+    triggerOn: 'mousemove'
+  },
+  legend: {
+    top: '2%',
+    left: '3%',
+    orient: 'vertical',
+    data: [
+      {
+        name: '相册',
+        icon: 'rectangle'
+      }],
+    borderColor: '#c23531'
+  },
+  series: [
+    {
+      type: 'tree',
+      name: '相册',
+      data: [],
+      top: '15%',
+      left: '7%',
+      bottom: '22%',
+      right: '18%',
+
+      symbolSize: 7,
+
+      label: {
+        normal: {
+          position: 'left',
+          verticalAlign: 'middle',
+          align: 'right'
+        }
+      },
+
+      leaves: {
+        label: {
+          normal: {
+            position: 'right',
+            verticalAlign: 'middle',
+            align: 'left'
+          }
+        }
+      },
+
+      expandAndCollapse: true,
+      animationDuration: 550,
+      animationDurationUpdate: 750
+    }
+  ]
+};

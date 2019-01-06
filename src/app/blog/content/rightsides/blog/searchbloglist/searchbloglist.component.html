@@ -6,7 +6,7 @@
   </div>
   <li *ngFor="let blog of searchblogs"><i><a [routerLink]="['../blogconent',blog.article_id]"><img src="../../../../../../assets/images/1.jpg"></a></i>
     <h3><a [routerLink]="['../blogconent',blog.article_id]" [innerHTML]="blog.article_title | keyword:keyword"></a></h3>
-    <p [innerHTML]="blog.article_content | keyword:keyword"></p>
+    <p [innerHTML]="blog.article_content.substring(0,100) | keyword:keyword"></p>
     <div class="info-box d-flex align-content-center">
       <p>
         <span class="date" [innerHTML]="blog.article_time | keyword:keyword"></span>

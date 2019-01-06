@@ -13,7 +13,7 @@
   </div>
   <li *ngFor="let blog of bloglist"><i><a [routerLink]="['../../blogconent',blog.article_id]"><img src="../../../../../../assets/images/1.jpg"></a></i>
     <h3><a [routerLink]="['../../blogconent',blog.article_id]">{{blog.article_title}}</a></h3>
-    <p>{{blog.article_content}}</p>
+    <p [innerHTML]="blog.article_content.substring(0,100)">...</p>
     <div class="info-box d-flex align-content-center">
       <p>
         <span class="date">{{blog.article_time}}</span>

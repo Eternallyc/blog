@@ -41,9 +41,9 @@ export class LoginComponent implements OnInit {
           this.passwd = '';
         } else {
           alert('登录成功!');
-          const time = 2 * 60 * 1000; // 设置两分钟后过期
-          this.cookies.set('message', req['message'], time);
-
+          const time = 2 * 60 * 60 * 1000; // 设置两分钟后过期
+          const timer = new Date(new Date( ).getTime( ) + time);
+          this.cookies.set('message', req['message'], timer);
           this.router.navigate(['/manage/home']);
         }
       });

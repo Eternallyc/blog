@@ -14,7 +14,7 @@
       </div>
       <hr>
       <br>
-      {{currentblog.article_content}}
+      <div [innerHTML]="currentblog.article_content"></div>
     </div>
     <div class="share">
       <p class="diggit" style="cursor: pointer;" (click)="pointlike()"><a> 很赞哦！ </a>(<b id="diggnum">

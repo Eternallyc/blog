@@ -15,8 +15,9 @@ export class HeadComponent implements OnInit {
     let obj = As[0];
     for (let i = 1; i < As.length; i++) {
       obj.id = '';
-      if (window.location.href.indexOf(As[i].href) >= 0) {
+      if (window.location.href.indexOf(As[i].getAttribute('title')) >= 0) {
       obj = As[i];
+      break;
     }}
     obj.id = 'selected';
 
@@ -58,5 +59,13 @@ export class HeadComponent implements OnInit {
         }, scroll_top_duration
       );
     });
+  }
+
+  change(id) {
+    const As = document.getElementById('starlist').getElementsByTagName('a');
+    for (let i = 0; i < As.length; i++) {
+ As[i].id = '';
+    }
+    As[id - 1].id = 'selected';
   }
 }

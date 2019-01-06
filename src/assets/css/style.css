@@ -1014,6 +1014,7 @@ ul.nav-second-level {
 }
 .nav.nav-second-level > li.active {
   border: none;
+  color: #ffffff;
 }
 .nav.nav-second-level.collapse[style] {
   height: auto !important;
