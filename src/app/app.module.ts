@@ -47,6 +47,7 @@ import { WriteblogComponent } from './manage/right/manageblog/writeblog/writeblo
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BloglistmanagesecondaryComponent } from './manage/right/manageblog/bloglistmanagesecondary/bloglistmanagesecondary.component';
+// import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 const appRoutes: Routes = [
   {path: 'blog', component: BlogpageComponent,
   children: [
@@ -118,7 +119,9 @@ const appRoutes: Routes = [
     QuillModule,
     FormsModule
   ],
-  providers: [LoginGuard, CookieService],
+  providers: [LoginGuard, CookieService,
+    // {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
