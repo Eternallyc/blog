@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Album} from '../../rightsides/albums/album/album.component';
 import {Router} from '@angular/router';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-leftside',
@@ -9,8 +10,16 @@ import {Router} from '@angular/router';
   styleUrls: ['./leftside.component.css']
 })
 export class LeftsideComponent implements OnInit {
-
-  constructor(private http: HttpClient, private router: Router) {
+  httpOptions: any;
+  name = '';
+  introduction = '';
+  avatar='';
+  constructor(private http: HttpClient, private router: Router, private cookies: CookieService) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': this.cookies.get('message')
+      })
+    };
   }
   albumList: Album[]; // 推荐相册
   classificationlist: Classification[]; // 分类
@@ -23,6 +32,11 @@ export class LeftsideComponent implements OnInit {
         this.recommendlist = req['recommendlist'];
         this.albumList = req['photoAlbumList'];
       });
+    this.http.get('/blogs/admin/getNameAndIntroduction', this.httpOptions).subscribe((req) => {
+      this.name = req['name'];
+      this.introduction = req['introduction'];
+      this.avatar = req['avatar'];
+    });
   }
 
   search() {
@@ -31,7 +45,7 @@ export class LeftsideComponent implements OnInit {
       event.preventDefault();
       return ;
     }
-    this.router.navigate(['blog/search'], {
+    this.router.navigate(['/blog/search'], {
       queryParams: {
         keyword: this.searchcontent
       }

@@ -31,8 +31,7 @@ export class BlogcontentComponent implements OnInit {
   }
 
   ngOnInit() {
-
-
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
   pointlike() {
     this.http.post('/blogs/article/pointlike', {'id': this.currentblogid})

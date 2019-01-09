@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FileUploader} from 'ng2-file-upload';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-manageletfside',
@@ -10,9 +13,17 @@ import { Component, OnInit } from '@angular/core';
     '../../../../assets/css/style.css']
 })
 export class ManageletfsideComponent implements OnInit {
-
-  constructor() {
-
+avatar = '';
+  httpOptions: any;
+  constructor(private http: HttpClient, private cookies: CookieService) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': this.cookies.get('message')
+      })
+    };
+    this.http.get('/blogs/admin/getNameAndIntroduction', this.httpOptions).subscribe((req) => {
+      this.avatar = req['avatar'];
+    });
   }
 
   ngOnInit() {
@@ -22,40 +33,63 @@ export class ManageletfsideComponent implements OnInit {
       if (window.location.href.indexOf(lis[i].getAttribute('title')) >= 0) {
         lis[i].className = 'active';
         if (i === 3 || i === 4 || i === 5) {
-          document.getElementById('blogmanage').style.display = 'block';
+          document.getElementById('messagemanage').style.display = 'block';
           document.getElementById('2').className = 'active';
+        } else if (i === 7 || i === 8) {
+          document.getElementById('blogmanage').style.display = 'block';
+          document.getElementById('3').className = 'active';
         }
       }
 
     }
   }
-  change(obj) {
 
+  change(obj) {
     if (obj === 2 && document.getElementById(obj.toString()).className === 'active') {
+      if (document.getElementById('messagemanage').style.display === 'block') {
+        document.getElementById('messagemanage').style.display = 'none';
+      } else {
+        document.getElementById('messagemanage').style.display = 'block';
+      }
+      return;
+    }
+    if (obj === 3 && document.getElementById(obj.toString()).className === 'active') {
       if (document.getElementById('blogmanage').style.display === 'block') {
         document.getElementById('blogmanage').style.display = 'none';
       } else {
         document.getElementById('blogmanage').style.display = 'block';
       }
-      return ;
+      return;
     }
-    for (let a = 1; a < 8; a ++) {
+    if (obj === 5 && document.getElementById(obj.toString()).className === 'active') {
+      if (document.getElementById('commentmanage').style.display === 'block') {
+        document.getElementById('commentmanage').style.display = 'none';
+      } else {
+        document.getElementById('commentmanage').style.display = 'block';
+      }
+      return;
+    }
+    for (let a = 1; a < 15; a++) {
       document.getElementById(a.toString()).className = '';
       if (a === 2) {
+        document.getElementById('messagemanage').style.display = 'none';
+      } else if (a === 3) {
         document.getElementById('blogmanage').style.display = 'none';
+      } else if (a === 5) {
+        document.getElementById('commentmanage').style.display = 'none';
       }
     }
     document.getElementById(obj.toString()).className = 'active';
+
     if (obj === 2) {
+      document.getElementById('messagemanage').style.display = 'block';
+    } else if (obj === 3) {
       document.getElementById('blogmanage').style.display = 'block';
+    } else if (obj === 5) {
+      document.getElementById('commentmanage').style.display = 'block';
     }
-    const lis = document.getElementById('side-menu').getElementsByTagName('li');
-    for (let i = 1; i < lis.length; i++) {
-      lis[i].className = '';
-    }
-    if (obj === 8 || obj === 9 ) {
-      document.getElementById('2').className = 'active';
-    }
-    document.getElementById(obj.toString()).className = 'active';
+
+
   }
+
 }

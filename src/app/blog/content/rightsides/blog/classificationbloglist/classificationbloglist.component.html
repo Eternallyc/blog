@@ -3,7 +3,7 @@
 <main class="r_box">
   <div class="filter-box d-flex align-items-center">
     <div class="breadcrumbs-box">
-      <a [routerLink]="['../../index']">全部文章</a><span class="ml8 mr8">&gt;</span>              {{name}}                </div>
+      <a [routerLink]="['/blog/index']">全部文章</a><span class="ml8 mr8">&gt;</span>              {{name}}                </div>
     <dl class="filter-sort-box d-flex align-items-center">
       <dt>排序：</dt>
       <dd><a id ="defaultsort" (click)="defaultsort()" style="cursor: pointer;" class="btn-filter-sort active" target="_self">默认</a></dd>
@@ -11,8 +11,8 @@
       <dd><a id ="readnumsort" (click)="readnumsort()" style="cursor: pointer;" class="btn-filter-sort " target="_self">按访问量</a></dd>
     </dl>
   </div>
-  <li *ngFor="let blog of bloglist"><i><a [routerLink]="['../../blogconent',blog.article_id]"><img src="../../../../../../assets/images/1.jpg"></a></i>
-    <h3><a [routerLink]="['../../blogconent',blog.article_id]">{{blog.article_title}}</a></h3>
+  <li *ngFor="let blog of bloglist"><i><a [routerLink]="['/blog/blogconent',blog.article_id]"><img src="../../../../../../assets/images/1.jpg"></a></i>
+    <h3><a [routerLink]="['/blog/blogconent',blog.article_id]">{{blog.article_title}}</a></h3>
     <p [innerHTML]="blog.article_content.substring(0,100)">...</p>
     <div class="info-box d-flex align-content-center">
       <p>

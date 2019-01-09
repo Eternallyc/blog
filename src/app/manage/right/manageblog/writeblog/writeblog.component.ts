@@ -122,7 +122,4 @@ export class WriteblogComponent implements OnInit {
     return;
   }
 }
-class Istop {
-  name: string;
-  value: number;
-}
+

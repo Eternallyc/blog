@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class BloglistleftComponent implements OnInit {
 
-  keyword:string = '';
+  keyword = '';
 
   constructor(private http: HttpClient, private activatedRoute: ActivatedRoute, private router: Router) {
    this.keyword = '';
@@ -47,7 +47,7 @@ export class BloglistleftComponent implements OnInit {
     }
     event.preventDefault();
     location.reload();
-    this.router.navigate(['../blog/search'], {
+    this.router.navigate(['/blog/search'], {
       queryParams: {
         keyword: this.keyword
       }

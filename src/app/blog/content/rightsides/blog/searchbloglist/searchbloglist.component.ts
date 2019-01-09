@@ -27,6 +27,7 @@ export class SearchbloglistComponent implements OnInit{
 
 
   ngOnInit() {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 
 }

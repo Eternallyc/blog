@@ -2,15 +2,15 @@
   <div class="about_me">
     <h2>关于我</h2>
     <ul>
-      <i><img src="../../../../../assets/images/timg.gif"></i>
-      <p><b>Eternallyc</b>，一个95后的小伙子！2016年正式进入吉首大学学习IT技术。现在正值大三，在这个两年的学习中，不断学习前端和后端知识，努力向人工智能靠近。。</p>
+      <i><img [src]="avatar"></i>
+      <p><b>{{name}}</b>，{{introduction}}</p>
     </ul>
   </div>
   <div class="wdxc">
     <h2>我的相册</h2>
     <ul>
       <li *ngFor="let album of albumList">
-        <a [routerLink]='["../album",album.photoalbum_id]'><img [src]="album.picture.picture_url"></a>
+        <a [routerLink]='["/blog/album",album.photoalbum_id]'><img [src]="album.picture.picture_url"></a>
       </li>
     </ul>
   </div>
@@ -25,7 +25,7 @@
   <div class="fenlei">
     <h2>文章分类</h2>
     <ul >
-      <li *ngFor="let classification of classificationlist" ><a [routerLink]="['../classification',classification.classification_id]">
+      <li *ngFor="let classification of classificationlist" ><a [routerLink]="['/blog/classification',classification.classification_id]">
         <span class="title_online">{{classification.name}}</span>
         <span class="count_right">{{classification.num}}篇</span>
       </a></li>
@@ -34,7 +34,7 @@
   <div class="tuijian">
     <h2>推荐博客</h2>
     <ul>
-      <li *ngFor="let blog of recommendlist"><a [routerLink]='["../blogconent",blog.article_id]'>{{blog.article_title}}</a></li>
+      <li *ngFor="let blog of recommendlist"><a [routerLink]='["/blog/blogconent",blog.article_id]'>{{blog.article_title}}</a></li>
     </ul>
   </div>
   <div class="tuijian">

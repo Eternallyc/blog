@@ -6,7 +6,7 @@
       <div class="bloginfo">
         <ul>
           <li class="lmname">所属分类：<a style="cursor: pointer;color:red;"
-                                     [routerLink]="['../../classification',currentblog.classification.classification_id]">{{currentblog.classification.name}}</a>
+                                     [routerLink]="['/blog/classification',currentblog.classification.classification_id]">{{currentblog.classification.name}}</a>
           </li>
           <li class="timer">时间：{{currentblog.article_time}}</li>
           <li class="view">{{currentblog.read_number}}人已阅读</li>

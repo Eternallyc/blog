@@ -1,0 +1,47 @@
+<div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox ">
+        <div class="ibox-content">
+          <div data-v-357a65ed="" class="view-container">
+            <div data-v-0d738edb="" data-v-357a65ed="" class="cont view">
+              <div data-v-0d738edb="" class="right_cont"><h3 data-v-0d738edb="" class="title">个人资料</h3>
+                <div data-v-0d738edb="" class="user_info">
+                  <div data-v-0d738edb="" class="header"><img data-v-0d738edb=""
+                                                              [src]="avatar"
+                                                              alt="" class="head">
+
+                    <input type="file" style="position: relative;top:20px;left: 50px;" ng2FileSelect
+                           [uploader]="uploader"
+                           (change)="selectedFileOnChanged($event)"/>
+                  </div> <!---->
+
+                  <div data-v-0d738edb="" class="right_c">
+                    <div data-v-0d738edb="" class="right_info">
+                      <div data-v-0d738edb="" class="id_card"><span data-v-0d738edb=""
+                                                                    class="id_name">事无好坏，诠释在人。</span> <!---->
+                        <!----> <a data-v-0d738edb="" [routerLink]="['/blog/index']" target="_blank"
+                                   class="user_home">个人主页</a></div>
+                    </div>
+                    <div data-v-0d738edb="" class="line"></div>
+                    <div data-v-0d738edb="" class="nick">
+                      <span data-v-0d738edb="">昵称：
+                        <input type="text" style="height: 20px;outline:none;margin-bottom: 10px;" [value]="name"
+                               (input)="doOnInput($event.target.value)"/>
+                        </span>
+                      <span data-v-0d738edb="" class="mod" (click)="change()">修改资料</span></div>
+                    <div>个人简介：</div>
+                    <textarea cols="33" rows="5" style="margin-top: 3px;" value="{{introduction}}"
+                              (input)="doOnInputTroduction($event.target.value)"></textarea>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -2,10 +2,10 @@
 <main class="r_box">
   <div class="filter-box d-flex align-items-center">
     <div class="breadcrumbs-box">
-      <a [routerLink]="['../../blog/index']">全部文章</a><span class="ml8 mr8">&gt;</span>              关于<span style="color:red;">{{keyword}}</span>文章，共搜索到<span style="color:red;">{{searchblogs.length}}</span>条结果                </div>
+      <a [routerLink]="['/blog/index']">全部文章</a><span class="ml8 mr8">&gt;</span>              关于<span style="color:red;">{{keyword}}</span>文章，共搜索到<span style="color:red;">{{searchblogs.length}}</span>条结果                </div>
   </div>
-  <li *ngFor="let blog of searchblogs"><i><a [routerLink]="['../blogconent',blog.article_id]"><img src="../../../../../../assets/images/1.jpg"></a></i>
-    <h3><a [routerLink]="['../blogconent',blog.article_id]" [innerHTML]="blog.article_title | keyword:keyword"></a></h3>
+  <li *ngFor="let blog of searchblogs"><i><a [routerLink]="['/blog/blogconent',blog.article_id]"><img src="../../../../../../assets/images/1.jpg"></a></i>
+    <h3><a [routerLink]="['/blog/blogconent',blog.article_id]" [innerHTML]="blog.article_title | keyword:keyword"></a></h3>
     <p [innerHTML]="blog.article_content.substring(0,100) | keyword:keyword"></p>
     <div class="info-box d-flex align-content-center">
       <p>

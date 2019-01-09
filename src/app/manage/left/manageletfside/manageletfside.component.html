@@ -3,48 +3,60 @@
     <ul class="nav metismenu" id="side-menu">
       <li class="nav-header">
         <div class="dropdown profile-element">
-         <img alt="image" class="rounded-circle" src="../../../../assets/images/1.jpg"
+         <img alt="image" class="rounded-circle" [src]="avatar"
                style="width: 48px;height: 48px;">
-          <input type="file" hidden>
-          <a data-toggle="dropdown" class="dropdown-toggle" href="/manage/home">
+          <a data-toggle="dropdown" class="dropdown-toggle" [routerLink]="['/manage/home']" title="/manage/home">
             <span class="block m-t-xs font-bold">Eternallyc</span>
             <span class="text-muted text-xs block">管理员 </span>
           </a>
         </div>
       </li>
       <li class="active" id="1" (click)="change(1)" title="/manage/home">
+      <a [routerLink]="['/manage/home']" ><i class="fa fa-bar-chart"></i>
+        <span class="nav-label">数据展示</span>
+      </a>
+    </li>
+      <li id="2" (click)="change(2)" title="/manage/messagemanage">
         <a [routerLink]="['/manage/home']" ><i class="fa fa-bar-chart"></i>
-          <span class="nav-label">数据展示</span>
+          <span class="nav-label">信息管理 <span
+            class="fa arrow"></span></span>
         </a>
+        <ul class="nav nav-second-level collapse in" style="display: none;" id="messagemanage" >
+          <li id="8" (click)="change(8)" style="cursor: auto" title="/manage/messagemanage/personalprofile"><a [routerLink]="['/manage/messagemanage/personalprofile']" >个人简介</a></li>
+          <li id="9" (click)="change(9)" style="cursor: auto" title="/manage/messagemanage/aboutmessage"><a [routerLink]="['/manage/messagemanage/aboutmessage']" >关于我</a></li>
+          <li id="10" (click)="change(10)" style="cursor: auto" title="/manage/messagemanage/passwdmanage"><a [routerLink]="['/manage/messagemanage/passwdmanage']" >密码管理</a></li>
+        </ul>
       </li>
-      <li (click)="change(2)" id="2" title="/manage/blogmanage">
+      <li (click)="change(3)" id="3" title="/manage/blogmanage">
         <a > <i class="fa fa-file"></i>
           <span class="nav-label">博客管理 <span
             class="fa arrow"></span></span>
         </a>
         <ul class="nav nav-second-level collapse in" style="display: none;" id="blogmanage" >
-          <li id="8" class="active" (click)="change(8)" style="cursor: auto" title="/manage/blogmanage/write"><a [routerLink]="['/manage/blogmanage/write']" >编写博客</a></li>
-          <li id="9" (click)="change(9)" style="cursor: auto" title="/manage/blogmanage/bloglistmanage"><a [routerLink]="['/manage/blogmanage/bloglistmanage']" >博客管理</a></li>
+          <li id="11" (click)="change(11)" style="cursor: auto" title="/manage/blogmanage/write"><a [routerLink]="['/manage/blogmanage/write']" >编写博客</a></li>
+          <li id="12" (click)="change(12)" style="cursor: auto" title="/manage/blogmanage/bloglistmanage"><a [routerLink]="['/manage/blogmanage/bloglistmanage']" >博客管理</a></li>
         </ul>
       </li>
-      <li id="3" (click)="change(3)" title="/manage/classification">
+      <li id="4" (click)="change(4)" title="/manage/classification">
         <a [routerLink]="['/manage/classification']" ><i class="fa fa-bars"></i>
           <span class="nav-label">分类管理</span>
         </a>
       </li>
-      <li id="4" (click)="change(4)" title="/manage/blogcommentmanage">
+
+      <li id="5" (click)="change(5)" title="/manage/blogcommentmanage">
         <a [routerLink]="['/manage/blogcommentmanage']" ><i class="fa fa-comment"></i>
-          <span class="nav-label">博客评论管理</span>
+          <span class="nav-label">评论管理 <span
+            class="fa arrow"></span></span>
         </a>
+        <ul class="nav nav-second-level collapse in" style="display: none;" id="commentmanage" >
+        <li id="13" class="active" (click)="change(13)" style="cursor: auto" title="/manage/blogmanage/write"><a [routerLink]="['/manage/blogmanage/write']" >博客评论管理</a></li>
+        <li id="14" (click)="change(14)" style="cursor: auto" title="/manage/blogmanage/bloglistmanage"><a [routerLink]="['/manage/blogmanage/bloglistmanage']" >相册评论管理</a></li>
+        </ul>
       </li>
-      <li id="5" (click)="change(5)" title="/manage/albummanage">
+
+      <li id="6" (click)="change(6)" title="/manage/albummanage">
         <a [routerLink]="['/manage/albummanage']" ><i class="fa fa-picture-o"></i>
           <span class="nav-label">相册管理</span>
-        </a>
-      </li>
-      <li id="6" (click)="change(6)" title="/manage/albumcomment">
-        <a [routerLink]="['/manage/albumcomment']" ><i class="fa fa-comment-o"></i>
-          <span class="nav-label">相册评论管理</span>
         </a>
       </li>
       <li id="7" (click)="change(7)" title="/manage/leavemessage">
