@@ -49,21 +49,14 @@ export class PersonalprofileComponent implements OnInit {
     this.uploader.queue[0].onSuccess = function (response, status, headers) {
       // 上传文件成功
       if (status === 200) {
-        // 上传文件后获取服务器返回的数据
-        // const tempRes = response;
         alert('上传成功！！');
       } else {
-        // 上传文件后获取服务器返回的数据错误
         alert('上传失败');
       }
 
     };
-    // onSuccessItem(item: FileItem, response: string, status: number, headers: ParsedResponseHeaders): any;
     this.uploader.queue[0].upload(); // 开始上传
-    // this.uploader.queue[0].onSuccess()
-
-    alert('上传之后');
-   window.location.reload();
+    window.location.reload();
   }
 
   ngOnInit() {

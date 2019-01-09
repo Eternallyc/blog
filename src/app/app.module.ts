@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
 import {HeadComponent} from './blog/head/head.component';
 import {FooterComponent} from './blog/footer/footer.component';
@@ -138,7 +138,7 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      {enableTracing: true}
+      {enableTracing: true},
     ),
     BrowserModule,
     BrowserAnimationsModule, // 导入动画模块

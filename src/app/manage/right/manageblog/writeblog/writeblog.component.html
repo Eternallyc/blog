@@ -16,13 +16,15 @@
             <div class="txt-box" style="display: inline;">
               <select id="selType" (change)="getType($event.target.value)">
                 <option value="0">请选择</option>
-                <option *ngFor="let classification of classificationlist" value="{{classification.classification_id}}" selected="{{currentblog.classification.classification_id}}">{{classification.name}}</option>
+                <option *ngFor="let classification of classificationlist" value="{{classification.classification_id}}"
+                        [selected]="currentblog==undefined?0:currentblog.classification.classification_id">{{classification.name}}
+                </option>
               </select>
               <span class="required">*</span>
 
               <label style="margin-left: 24px;">是否置顶：</label>
               <div class="txt-box" style="display: inline;">
-                <select id="selTop" (change)="getTop($event.target.value)" >
+                <select id="selTop" (change)="getTop($event.target.value)">
                   <option value="0">不置顶</option>
                   <option value="1">置顶</option>
                 </select>
@@ -35,8 +37,10 @@
 
           </div>
           <div style="margin-top: 30px;">
-            <input type="text" title="发表博客" class="btn btn-outline-danger" style="margin-right: 30px;" value="发表博客" (click)="publish()">
-            <input type="text" title="保存博客" class="btn btn-outline-danger ml-24 btn-baocun" style="margin-right: 30px;" (click)="save()"
+            <input type="text" title="发表博客" class="btn btn-outline-danger" style="margin-right: 30px;" value="发表博客"
+                   (click)="publish()">
+            <input type="text" title="保存博客" class="btn btn-outline-danger ml-24 btn-baocun" style="margin-right: 30px;"
+                   (click)="save()"
                    value="保存博客">
           </div>
         </div>
