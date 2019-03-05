@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
@@ -7,9 +7,11 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./aboutme.component.css']
 })
 export class AboutmeComponent implements OnInit {
-    title = '';
-    content = '';
-  constructor(private http: HttpClient) { }
+  title = '';
+  content = '';
+
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit() {
 

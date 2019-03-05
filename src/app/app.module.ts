@@ -2,139 +2,36 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
-import {HeadComponent} from './blog/head/head.component';
-import {FooterComponent} from './blog/footer/footer.component';
-import {IndexComponent} from './blog/content/rightsides/blog/index/index.component';
-import {AlbumComponent} from './blog/content/rightsides/albums/album/album.component';
-import {LeavemessageComponent} from './blog/content/rightsides/leavemessage/leavemessage.component';
-import {LeftsideComponent} from './blog/content/leftsides/leftside/leftside.component';
-import {BlogcontentComponent} from './blog/content/rightsides/blog/blogcontent/blogcontent.component';
-import {AboutmeComponent} from './blog/content/rightsides/aboutme/aboutme.component';
-import {AlbumcontentComponent} from './blog/content/rightsides/albums/albumcontent/albumcontent.component';
-import {BlogpageComponent} from './blog/blogpage/blogpage.component';
 import {Code404Component} from './code404/code404.component';
 import {HttpClientModule} from '@angular/common/http';
-import {BloglistleftComponent} from './blog/content/leftsides/bloglistleft/bloglistleft.component';
-import {ClassificationbloglistComponent} from './blog/content/rightsides/blog/classificationbloglist/classificationbloglist.component';
-import {SearchbloglistComponent} from './blog/content/rightsides/blog/searchbloglist/searchbloglist.component';
-import {SearchkeywordPipe} from './pipe/searchkeyword.pipe';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxEchartsModule} from 'ngx-echarts';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-  // ...
-} from '@angular/animations';
 import {LoginComponent} from './manage/login/login.component';
-import {HomeComponent} from './manage/right/home/home.component';
-import {PersonalcenterComponent} from './manage/right/personalcenter/personalcenter.component';
-import {CommentmanageComponent} from './manage/right/commentmanage/commentmanage.component';
-import {LeavemessagemanageComponent} from './manage/right/leavemessagemanage/leavemessagemanage.component';
-import {ClassificationmanageComponent} from './manage/right/classificationmanage/classificationmanage.component';
-import {ManageletfsideComponent} from './manage/left/manageletfside/manageletfside.component';
-import {ManagerightheadComponent} from './manage/managerighthead/managerighthead.component';
-import {ManagepageComponent} from './manage/managepage/managepage.component';
-import {ManagefooterComponent} from './manage/managefooter/managefooter.component';
 import {LoginGuard} from './manage/guard/login.guard';
 import {CookieService} from 'ngx-cookie-service';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {QuillModule} from 'ngx-quill';
-import {BloglistmanageComponent} from './manage/right/manageblog/bloglistmanage/bloglistmanage.component';
-import {WriteblogComponent} from './manage/right/manageblog/writeblog/writeblog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {BloglistmanagesecondaryComponent} from './manage/right/manageblog/bloglistmanagesecondary/bloglistmanagesecondary.component';
 import {CommonModule} from '@angular/common';
 import {FileUploadModule} from 'ng2-file-upload';
-import {PersonalprofileComponent} from './manage/right/messagemanage/personalprofile/personalprofile.component';
-import {PasswdmanageComponent} from './manage/right/messagemanage/passwdmanage/passwdmanage.component';
-import {AboutmemanageComponent} from './manage/right/messagemanage/aboutmemanage/aboutmemanage.component';
-// import {HashLocationStrategy, LocationStrategy} from '@angular/common';
-
 const appRoutes: Routes = [
-  {path: '', component: BlogpageComponent, children: [
-      {path: '', component: IndexComponent},
-    ]
-  },
   {
-    path: 'blog', component: BlogpageComponent,
-    children: [
-      {path: 'index', component: IndexComponent},
-      {path: 'search', component: SearchbloglistComponent},
-      {path: 'aboutme', component: AboutmeComponent},
-      {path: 'blogconent/:id', component: BlogcontentComponent},
-      {path: 'album', component: AlbumComponent},
-      {path: 'leavemessage', component: LeavemessageComponent},
-      {path: 'album/:id', component: AlbumcontentComponent},
-      {path: 'classification/:classification_id', component: ClassificationbloglistComponent}
-    ]
+    path: '',
+    loadChildren: './blog/blogpage/blogpage.module#BlogpageModule'
   },
   {path: 'login', component: LoginComponent},
   {
-    path: 'manage', component: ManagepageComponent,
-    children: [
-      {path: 'home', component: HomeComponent, canActivate: [LoginGuard]},
-      {path: 'classification', component: ClassificationmanageComponent},
-      {
-        path: 'blogmanage',
-        children: [
-          {path: 'write', component: WriteblogComponent},
-          {path: 'write/:id', component: WriteblogComponent},
-          {path: 'bloglistmanage', component: BloglistmanageComponent}
-        ]
-      },
-      {
-        path: 'messagemanage',
-        children: [
-          {path: 'personalprofile', component: PersonalprofileComponent},
-          {path: 'aboutmessage', component: AboutmemanageComponent},
-          {path: 'passwdmanage', component: PasswdmanageComponent}
-        ]
-      },
-      {path: 'blogcommentmanage', component: CommentmanageComponent}
-    ], canActivate: [LoginGuard]
+    path: 'manage',
+    loadChildren: './manage/managepage/managepage.module#ManagepageModule'
   },
-
   {path: '**', component: Code404Component}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeadComponent,
-    FooterComponent,
-    IndexComponent,
-    AlbumComponent,
-    LeavemessageComponent,
-    LeftsideComponent,
-    BlogcontentComponent,
-    AboutmeComponent,
-    AlbumcontentComponent,
-    BlogpageComponent,
     Code404Component,
-    BloglistleftComponent,
-    ClassificationbloglistComponent,
-    SearchbloglistComponent,
-    SearchkeywordPipe,
-    LoginComponent,
-    HomeComponent,
-    PersonalcenterComponent,
-    CommentmanageComponent,
-    LeavemessagemanageComponent,
-    ClassificationmanageComponent,
-    ManageletfsideComponent,
-    ManagerightheadComponent,
-    ManagepageComponent,
-    ManagefooterComponent,
-    BloglistmanageComponent,
-    WriteblogComponent,
-    BloglistmanagesecondaryComponent,
-    PersonalprofileComponent,
-    PasswdmanageComponent,
-    AboutmeComponent,
-    AboutmemanageComponent
+    LoginComponent
   ],
   imports: [
     RouterModule.forRoot(
