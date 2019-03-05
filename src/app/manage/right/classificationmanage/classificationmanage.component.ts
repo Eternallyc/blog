@@ -83,7 +83,7 @@ export class ClassificationmanageComponent implements OnInit {
   }
   // 保存修改
   save(id) {
-    const tr = document.getElementById(id);
+    const tr = document.getElementById('classification' + id);
     this.http.post('/blogs/classification/admin/updateClasssification', {'id': id, 'name': tr.getElementsByTagName('input')[0].value}, this.httpOptions)
       .subscribe((req) => {
         this.classificationlist = req['list'];
@@ -93,14 +93,14 @@ export class ClassificationmanageComponent implements OnInit {
   }
   // 取消修改
   cancel(obj) {
-    const tr = document.getElementById(obj);
+    const tr = document.getElementById('classification' + obj);
     tr.getElementsByTagName('input')[0].value = this.classificationlist[obj - 1].name;
     tr.getElementsByTagName('div')[0].style.display = 'none';
     tr.getElementsByTagName('a')[0].style.display = 'inline';
   }
   // 编辑
-  edit(obj) {
-    const tr = document.getElementById(obj);
+  edit1(obj) {
+    const tr = document.getElementById('classification' + obj);
     tr.getElementsByTagName('div')[0].style.display = 'inline';
     tr.getElementsByTagName('a')[0].style.display = 'none';
   }

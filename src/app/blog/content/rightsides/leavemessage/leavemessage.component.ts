@@ -46,9 +46,17 @@ export class LeavemessageComponent implements OnInit {
     , 'time': this.date, 'reply': this.reply})
       .subscribe((req) => {
         alert('发表留言成功');
-        window.location.reload();
-        this.leavemessagelist = req['leavemessagelist'];
       });
+    this.http.post('/blogs/leavemessage/sendArticleEmil',
+      {'username': this.username, 'avatar': this.avatar, 'content': this.content
+        , 'time': this.date, 'reply': this.reply}).subscribe((req) => {
+      this.username = '';
+      this.avatar = '../../../../../../assets/images/tx1.jpg'; // 默认头像为第一个
+      this.content = '';
+      this.reply = '';
+      window.location.reload();
+      this.leavemessagelist = req['leavemessagelist'];
+    });
 
   }
   // 得到输入的用户名

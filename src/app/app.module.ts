@@ -54,14 +54,14 @@ import {AboutmemanageComponent} from './manage/right/messagemanage/aboutmemanage
 // import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 const appRoutes: Routes = [
-  { path: '', component: BlogpageComponent, children: [
+  {path: '', component: BlogpageComponent, children: [
       {path: '', component: IndexComponent},
-  ]},
+    ]
+  },
   {
     path: 'blog', component: BlogpageComponent,
     children: [
       {path: 'index', component: IndexComponent},
-
       {path: 'search', component: SearchbloglistComponent},
       {path: 'aboutme', component: AboutmeComponent},
       {path: 'blogconent/:id', component: BlogcontentComponent},
@@ -93,6 +93,7 @@ const appRoutes: Routes = [
           {path: 'passwdmanage', component: PasswdmanageComponent}
         ]
       },
+      {path: 'blogcommentmanage', component: CommentmanageComponent}
     ], canActivate: [LoginGuard]
   },
 

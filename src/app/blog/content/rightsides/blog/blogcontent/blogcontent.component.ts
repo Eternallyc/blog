@@ -68,20 +68,26 @@ export class BlogcontentComponent implements OnInit {
     }
     event.preventDefault();
 
-    this.http.post('/blogs/article/commentcurrent', {'currentblogid': this.currentblogid, 'username': this.username, 'avatar': this.avatar, 'content': this.content
+    this.http.post('/blogs/article/commentcurrent',
+      {'currentblogid': this.currentblogid,
+        'username': this.username, 'avatar': this.avatar, 'content': this.content
       , 'time': this.date, 'reply': this.reply})
       .subscribe((req) => {
         this.commentlist = req['commentlist'];
-        alert('发表留言成功');
-        this.username = '';
-        this.avatar = '../../../../../../assets/images/tx1.jpg'; // 默认头像为第一个
-        this.content = '';
-        this.reply = '';
+        alert('发表评论成功');
       });
 
+    this.http.post('/blogs/article/sendArticleEmil',
+      {'currentblogid': this.currentblogid,
+        'username': this.username, 'avatar': this.avatar, 'content': this.content
+      , 'time': this.date, 'reply': this.reply}).subscribe((req) => {
+      this.username = '';
+      this.avatar = '../../../../../../assets/images/tx1.jpg'; // 默认头像为第一个
+      this.content = '';
+      this.reply = '';
+    });
   }
 }
-
 /**
  * 评论类
  */

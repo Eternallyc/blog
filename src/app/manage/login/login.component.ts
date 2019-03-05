@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   passwd = '';
   flag = false;
 
-  constructor(private http: HttpClient, private router: Router, private cookies: CookieService) {
+  constructor(private titleService: Title, private http: HttpClient, private router: Router, private cookies: CookieService) {
+    titleService.setTitle('登录');
   }
 
   ngOnInit() {

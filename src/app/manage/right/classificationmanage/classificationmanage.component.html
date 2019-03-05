@@ -36,14 +36,16 @@
               </tr>
               </thead>
               <tbody>
-              <tr class="gradeX" *ngFor="let classification of classificationlist" id="{{classification.classification_id}}">
+              <tr class="gradeX" *ngFor="let classification of classificationlist"
+                  id="classification{{classification.classification_id}}">
                 <td>
                   <a style="cursor: auto" id="visiable">{{classification.name}}</a>
                   <div id='edit' style="display: none; width: 100px;">
                     <input [value]="classification.name">
                     <a style="margin-left:15px;color: #349EDF;border-right: 2px solid #E9E9E9;padding-right: 8px;
     margin-right: 8px;" (click)="save(classification.classification_id)">保存</a>
-                    <a style="color: #349EDF;padding-right: 8px;" (click)="cancel(classification.classification_id)">取消</a>
+                    <a style="color: #349EDF;padding-right: 8px;"
+                       (click)="cancel(classification.classification_id)">取消</a>
                   </div>
                 </td>
                 <td>{{classification.num}}</td>
@@ -52,7 +54,7 @@
                           style="cursor: pointer;">{{isvisiable[classification.isvisiable] }}</span></td>
                 <td class="center">
                   <a title="编辑" class="" style="color: #349EDF;border-right: 2px solid #E9E9E9;padding-right: 8px;
-    margin-right: 8px;" (click)="edit(classification.classification_id)">编辑</a>
+    margin-right: 8px;" (click)="edit1(classification.classification_id)">编辑</a>
                   <a title="删除" class="" style=" cursor: pointer;  color: #B50C13;"
                      (click)="delete(classification.classification_id)">删除</a>
                 </td>

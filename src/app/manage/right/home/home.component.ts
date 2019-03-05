@@ -115,7 +115,7 @@ export class HomeComponent implements OnInit {
               name: '数量',
               min: 0,
               max: maxnum + 100,
-              interval: (maxnum + 100) / this.classificationlistlikenum.length,
+              interval: Math.round((maxnum + 100) / this.classificationlistlikenum.length),
               axisLabel: {
                 formatter: '{value}'
               }
@@ -125,7 +125,7 @@ export class HomeComponent implements OnInit {
               name: '评论数量',
               min: 0,
               max: maxnum1 + 5,
-              interval: (maxnum + 5) / this.classificationlistcommentnum.length,
+              interval: Math.round((maxnum + 5) / this.classificationlistcommentnum.length),
               axisLabel: {
                 formatter: '{value} '
               }

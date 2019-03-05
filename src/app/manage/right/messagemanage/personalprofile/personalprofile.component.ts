@@ -43,20 +43,25 @@ export class PersonalprofileComponent implements OnInit {
    * @param event
    */
   selectedFileOnChanged(event: any) {
-    console.log(event.target.value);
-    console.log(event);
+    // console.log(event.target.value);
+    // console.log(event);
+    this.uploader.queue[0].upload(); // 开始上传
+    alert('正在上传');
     // 上传
     this.uploader.queue[0].onSuccess = function (response, status, headers) {
       // 上传文件成功
       if (status === 200) {
         alert('上传成功！！');
+        window.location.reload();
       } else {
         alert('上传失败');
+        window.location.reload();
       }
 
     };
-    this.uploader.queue[0].upload(); // 开始上传
-    window.location.reload();
+
+
+
   }
 
   ngOnInit() {

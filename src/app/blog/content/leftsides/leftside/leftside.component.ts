@@ -13,7 +13,7 @@ export class LeftsideComponent implements OnInit {
   httpOptions: any;
   name = '';
   introduction = '';
-  avatar='';
+  avatar = '';
   constructor(private http: HttpClient, private router: Router, private cookies: CookieService) {
     this.httpOptions = {
       headers: new HttpHeaders({
@@ -25,7 +25,9 @@ export class LeftsideComponent implements OnInit {
   classificationlist: Classification[]; // 分类
   recommendlist: Blog[]; // 推荐博客
   searchcontent: string; // 搜索内容
+
   ngOnInit() {
+
     this.http.get('/blogs/classification/indexleftlist')
       .subscribe((req) => {
         this.classificationlist = req['simplelist'];
@@ -37,6 +39,8 @@ export class LeftsideComponent implements OnInit {
       this.introduction = req['introduction'];
       this.avatar = req['avatar'];
     });
+
+
   }
 
   search() {
