@@ -21,6 +21,7 @@ export class IndexComponent implements OnInit {
       .subscribe((req) => {
         this.commonList = req['commonlist'];
         this.toppingList = req['toppinglist'];
+        console.log(this.commonList);
       });
   }
 

@@ -18,6 +18,7 @@ export class ClassificationmanageComponent implements OnInit {
   isvisiableclass = ['label label-default', 'label label-primary'];
   isvisiable = ['隐藏', '显示'];
   httpOptions: any;
+
   constructor(private http: HttpClient, private cookies: CookieService) {
     this.httpOptions = {
       headers: new HttpHeaders({
@@ -42,6 +43,7 @@ export class ClassificationmanageComponent implements OnInit {
     this.http.post('/blogs/classification/admin/addNewClassification', {'name': this.classname}, this.httpOptions)
       .subscribe((req) => {
         this.classificationlist = req['list'];
+        this.classname = '';
       });
   }
 
@@ -81,16 +83,21 @@ export class ClassificationmanageComponent implements OnInit {
         });
     }
   }
+
   // 保存修改
   save(id) {
     const tr = document.getElementById('classification' + id);
-    this.http.post('/blogs/classification/admin/updateClasssification', {'id': id, 'name': tr.getElementsByTagName('input')[0].value}, this.httpOptions)
+    this.http.post('/blogs/classification/admin/updateClasssification', {
+      'id': id,
+      'name': tr.getElementsByTagName('input')[0].value
+    }, this.httpOptions)
       .subscribe((req) => {
         this.classificationlist = req['list'];
       });
     tr.getElementsByTagName('div')[0].style.display = 'none';
     tr.getElementsByTagName('a')[0].style.display = 'inline';
   }
+
   // 取消修改
   cancel(obj) {
     const tr = document.getElementById('classification' + obj);
@@ -98,6 +105,7 @@ export class ClassificationmanageComponent implements OnInit {
     tr.getElementsByTagName('div')[0].style.display = 'none';
     tr.getElementsByTagName('a')[0].style.display = 'inline';
   }
+
   // 编辑
   edit1(obj) {
     const tr = document.getElementById('classification' + obj);
