@@ -4,16 +4,17 @@ ul, li {
 }
 #starlist {
   float: right;
+  li{
+    float: left;
+    display: block;
+    padding: 0 0 0 40px;
+    font-size: 16px;
+  }
+  .active {
+    color: #f65a8a;
+  }
 }
-#starlist li {
-  float: left;
-  display: block;
-  padding: 0 0 0 40px;
-  font-size: 16px;
-}
-#starlist .active {
-  color: #f65a8a;
-}
+
 .slideDown {
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);

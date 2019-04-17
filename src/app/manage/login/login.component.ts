@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
-import { Title } from '@angular/platform-browser';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -20,8 +20,10 @@ export class LoginComponent implements OnInit {
   constructor(private titleService: Title, private http: HttpClient, private router: Router, private cookies: CookieService) {
     titleService.setTitle('登录');
   }
-
+  province:string;
   ngOnInit() {
+    // @ts-ignore
+    this.province = returnCitySN['cname'];
   }
 
   doOnInputName(event) {
@@ -44,7 +46,7 @@ export class LoginComponent implements OnInit {
         } else {
           alert('登录成功!');
           const time = 2 * 60 * 60 * 1000; // 设置两分钟后过期
-          const timer = new Date(new Date( ).getTime( ) + time);
+          const timer = new Date(new Date().getTime() + time);
           this.cookies.set('message', req['message'], timer);
           this.router.navigate(['/manage/home']);
         }

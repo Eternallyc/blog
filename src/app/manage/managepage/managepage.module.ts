@@ -32,6 +32,7 @@ const managePageRoutes: Routes = [
     path: '', component: ManagepageComponent,
     children: [
       {path: 'home', component: HomeComponent, canActivate: [LoginGuard]},
+      {path: 'leavemessage', component: LeavemessagemanageComponent, canActivate: [LoginGuard]},
       {path: 'classification', component: ClassificationmanageComponent},
       {
         path: 'blogmanage',

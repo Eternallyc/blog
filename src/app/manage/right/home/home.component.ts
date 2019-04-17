@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import {Classification} from '../../../blog/content/leftsides/leftside/leftside.component';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -39,14 +40,15 @@ export class HomeComponent implements OnInit {
   options1 = TREE_OPTION1;
   mergeData1 = null;
 
-  constructor(private http: HttpClient, private cookies: CookieService) {
+  constructor(private http: HttpClient, private cookies: CookieService,
+              private titleService: Title) {
     this.httpOptions = {
       headers: new HttpHeaders({
         'Authorization': this.cookies.get('message')
       })
     };
 
-
+    titleService.setTitle('数据展示');
   }
 
   ngOnInit() {

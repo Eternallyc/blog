@@ -4,6 +4,8 @@ import {Blog, Classification} from '../../../../blog/content/leftsides/leftside/
 import {CookieService} from 'ngx-cookie-service';
 import {formatDate} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
+import {FileUploader} from 'ng2-file-upload';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-writeblog',
@@ -25,7 +27,9 @@ export class WriteblogComponent implements OnInit {
   currentblogid: string; // 当前博客的id
 
   currentblog: Blog; // 当前博客
-  constructor(private http: HttpClient, private cookies: CookieService, private routeInfo: ActivatedRoute) {
+  constructor(private http: HttpClient, private cookies: CookieService,
+              private routeInfo: ActivatedRoute, private titleService: Title) {
+    titleService.setTitle('编写博客');
     this.httpOptions = {
       headers: new HttpHeaders({
         'Authorization': this.cookies.get('message')
@@ -45,12 +49,23 @@ export class WriteblogComponent implements OnInit {
         });
     }
   }
-
+  uploader: FileUploader = new FileUploader({
+    url: 'blogs/picture/uploadClient'
+    , method: 'POST'
+    , itemAlias: 'article_image'
+    , autoUpload: true
+  });
   ngOnInit() {
     this.date = new Date().getFullYear() + '-' + (new Date().getMonth() + 1).toString() + '-'
       + new Date().getDate() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() +
     ':' + new Date().getSeconds();
-
+    this.uploader.onSuccessItem =  (item, response, status, headers) => {
+      if (status === 200) {
+        const img = '<img  src="' + response.split('?')[0] + '" ' +
+          'width="600px" height="300px">';
+        this.content += img;
+      }
+    };
     // 得到所有分类
     this.http.get('/blogs/admin/blogwrite/getallclassification', this.httpOptions)
       .subscribe((req) => {

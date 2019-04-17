@@ -1,5 +1,3 @@
-<!--<editor>
-</editor>-->
 <div class="wrapper wrapper-content">
   <div class="row">
     <div class="col-lg-12">
@@ -8,9 +6,101 @@
           <input type="text" placeholder="请输入文章标题" maxlength="100" style="width: 100%;height: 40px; line-height: 40px;display: block;    border: none;background-color: #efefef;
     color: #4f4f4f;margin-bottom: 24px;    box-sizing: border-box;
     padding: 0 16px;" value="{{title}}" (input)="doOnInput($event)">
+          <quill-editor [style]="{height: '350px'}"
+                        [(ngModel)]="content" placeholder="在这里详细描述一个推荐原因，\n">
+            <div quill-editor-toolbar>
+              <!--字体加粗，斜线，底线，删线-->
+                <span class="ql-formats">
+              <button class="ql-bold"></button>
+              <button class="ql-italic"></button>
+              <button class="ql-underline"></button>
+              <button class="ql-strike"></button>
+              </span>
 
-          <quill-editor [style]="{height: '350px'}" [(ngModel)]="content"></quill-editor>
+              <!--引用，代码-->
+              <span class="ql-formats">
+              <button class="ql-blockquote"></button>
+              <button class="ql-code-block"></button>
+              </span>
 
+              <!--标题1和标题2-->
+              <span class="ql-formats">
+              <button class="ql-header" value="1"></button>
+              <button class="ql-header" value="2"></button>
+              </span>
+
+              <!--数字列表和符号列表-->
+              <span class="ql-formats">
+              <button class="ql-list" value="ordered"></button>
+              <button class="ql-list" value="bullet"></button>
+              </span>
+
+              <!--文字脚本sub和super-->
+              <span class="ql-formats">
+              <button class="ql-script" value="sub"></button>
+              <button class="ql-script" value="super"></button>
+              </span>
+
+              <!--文字缩进-->
+              <span class="ql-formats">
+              <button class="ql-indent" value="-1"></button>
+              <button class="ql-indent" value="+1"></button>
+              </span>
+
+              <!--文字对齐方式-->
+              <span class="ql-formats">
+              <button class="ql-direction" value="rtl"></button>
+              </span>
+
+
+
+              <!--字体大小（设置前面输入的）和大小(设置后面输入的)-->
+           <span class="ql-formats">
+             <select class="ql-header">
+                  <option value="false"></option>
+               <option value="1"></option>
+              <option value="2"></option>
+              <option value="3"></option>
+                 <option value="4"></option>
+                 <option value="5"></option>
+                 <option value="6"></option>
+             </select>
+
+            <select class="ql-size">
+              <option value="small"></option>
+              <option selected></option>
+              <option value="large"></option>
+              <option value="huge"></option>
+            </select>
+            </span>
+
+              <!--字体前景色和背景色以及字体样式和字体对齐方式-->
+              <span class="ql-formats">
+                 <select class="ql-color"></select>
+                 <select class="ql-background"></select>
+                   <select class="ql-font"></select>
+                 <select class="ql-align"></select>
+              </span>
+
+              <!--链接、图片和视频-->
+              <span class="ql-formats">
+            <button type="button" class="ql-link"></button>
+            <button type="button" style="outline:none">
+
+            <div class="upload_img">
+            <svg class="camera" viewBox="0 0 18 18">
+              <rect class="ql-stroke" height="10" width="12" x="3" y="4"></rect> <circle class="ql-fill" cx="6" cy="7" r="1"></circle> <polyline class="ql-even ql-fill" points="5 12 5 11 7 9 8 10 11 7 13 9 13 12 5 12"></polyline> </svg>
+            <input type="file" style="position: relative;top:-22px;left: 22px;" ng2FileSelect [uploader]="uploader" />
+            </div>
+            </button>
+            </span>
+              <span class="ql-formats">
+            <p style="font-size: 9px;" *ngIf="uploader?.queue.length > 0">图片已上传：{{ uploader?.queue.length > 0 ? uploader?.queue[uploader?.queue.length-1]?.progress : 0 }}%</p>
+              </span>
+            </div>
+
+
+          </quill-editor>
           <div style="margin-top: 30px;">
             <label>个人分类：</label>
             <div class="txt-box" style="display: inline;">

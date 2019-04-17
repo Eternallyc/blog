@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import {ActivatedRoute} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-aboutmemanage',
@@ -16,7 +17,9 @@ export class AboutmemanageComponent implements OnInit {
   title = ''; // 关于我的标题
   content = ''; // 关于我的内容
   httpOptions: any;
-  constructor(private http: HttpClient, private cookies: CookieService, private routeInfo: ActivatedRoute) {
+  constructor(private http: HttpClient, private cookies: CookieService,
+              private routeInfo: ActivatedRoute, private titleService: Title) {
+    titleService.setTitle('关于我');
     this.httpOptions = {
       headers: new HttpHeaders({
         'Authorization': this.cookies.get('message')

@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import {ActivatedRoute} from '@angular/router';
 import {FileUploader} from 'ng2-file-upload';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-personalprofile',
@@ -20,7 +21,9 @@ export class PersonalprofileComponent implements OnInit {
   httpOptions: any;
 
 
-  constructor(private http: HttpClient, private cookies: CookieService, private routeInfo: ActivatedRoute) {
+  constructor(private http: HttpClient, private cookies: CookieService,
+              private routeInfo: ActivatedRoute, private titleService: Title) {
+    titleService.setTitle('个人简介');
     this.httpOptions = {
       headers: new HttpHeaders({
         'Authorization': this.cookies.get('message')
@@ -59,9 +62,6 @@ export class PersonalprofileComponent implements OnInit {
       }
 
     };
-
-
-
   }
 
   ngOnInit() {

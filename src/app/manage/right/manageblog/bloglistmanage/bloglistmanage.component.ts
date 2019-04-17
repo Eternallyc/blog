@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Blog} from '../../../../blog/content/leftsides/leftside/leftside.component';
 import {CookieService} from 'ngx-cookie-service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-bloglistmanage',
@@ -24,7 +25,9 @@ export class BloglistmanageComponent implements OnInit {
   locatenext2 = 3; // 当前页面的下下页是2
   flag = false; // 是否进行过搜索,默认false
   constructor(private http: HttpClient, private cookies: CookieService,
-              private routeInfo: ActivatedRoute, private router: Router) {
+              private routeInfo: ActivatedRoute, private router: Router,
+              private titleService: Title) {
+    titleService.setTitle('博客管理');
     this.httpOptions = {
       headers: new HttpHeaders({
         'Authorization': this.cookies.get('message')

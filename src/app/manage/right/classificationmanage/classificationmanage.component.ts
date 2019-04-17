@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Classification} from '../../../blog/content/leftsides/leftside/leftside.component';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
+import {ActivatedRoute} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-classificationmanage',
@@ -19,7 +21,9 @@ export class ClassificationmanageComponent implements OnInit {
   isvisiable = ['隐藏', '显示'];
   httpOptions: any;
 
-  constructor(private http: HttpClient, private cookies: CookieService) {
+  constructor(private http: HttpClient, private cookies: CookieService
+    , private titleService: Title) {
+    titleService.setTitle('分类管理');
     this.httpOptions = {
       headers: new HttpHeaders({
         'Authorization': this.cookies.get('message')

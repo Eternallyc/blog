@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-passwdmanage',
@@ -16,7 +17,11 @@ export class PasswdmanageComponent implements OnInit {
   passwd = '';
   confirm = '';
   httpOptions: any;
-  constructor(private router: Router, private http: HttpClient, private cookies: CookieService, private routeInfo: ActivatedRoute) {
+
+  constructor(private router: Router, private http: HttpClient,
+              private cookies: CookieService, private routeInfo: ActivatedRoute
+    , private titleService: Title) {
+    titleService.setTitle('修改密码');
     this.httpOptions = {
       headers: new HttpHeaders({
         'Authorization': this.cookies.get('message')
@@ -26,21 +31,23 @@ export class PasswdmanageComponent implements OnInit {
 
   ngOnInit() {
   }
+
   onsubmit() {
     if (this.passwd === '') {
       alert('请输入密码');
-      return ;
+      return;
     }
     if (this.confirm === '') {
       alert('请输入确认密码');
-      return ;
+      return;
     }
     if (this.passwd !== this.confirm) {
       alert('两次密码不一致');
-      return ;
+      return;
     }
     if (confirm('确认修改密码吗？')) {
-      this.http.post('/blogs/admin/changeuserpwd', {'passwd': this.passwd}, this.httpOptions)
+      this.http.post('/blogs/admin/changeuserpwd',
+        {'passwd': this.passwd}, this.httpOptions)
         .subscribe((req) => {
           alert('修改成功');
           this.cookies.delete('message');
@@ -48,9 +55,11 @@ export class PasswdmanageComponent implements OnInit {
         });
     }
   }
+
   doOnInputPassWd(obj) {
     this.passwd = obj;
   }
+
   doOnInputConfirm(obj) {
     this.confirm = obj;
   }
