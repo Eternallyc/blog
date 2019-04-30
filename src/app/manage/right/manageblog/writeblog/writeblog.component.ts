@@ -17,6 +17,7 @@ import {Title} from '@angular/platform-browser';
     '../../../../../assets/css/style.css']
 })
 export class WriteblogComponent implements OnInit {
+
   title = ''; // 博客标题
   content = ''; // 博客内容
   type = 0; // 博客分类
